@@ -35,11 +35,9 @@ steps:
     commands:
       - bun install --frozen-lockfile
       - bun --filter starlight-celestia-theme build
-      - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > packages/starlight-celestia-theme/.npmrc
-      - echo "registry=https://codefloe.com/api/packages/devxy/npm/" >> packages/starlight-celestia-theme/.npmrc
+      - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > ~/.npmrc
       - apk add -q --no-cache npm
-      - cd packages/starlight-celestia-theme && npm publish
-      - rm -f .npmrc
+      - cd packages/starlight-celestia-theme && npm publish --registry https://codefloe.com/api/packages/devxy/npm/
 
   "Create release":
     depends_on:
