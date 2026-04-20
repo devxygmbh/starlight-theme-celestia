@@ -5,6 +5,7 @@ const { hasSidebar } = Astro.locals.starlightRoute
 <div class="flex min-h-screen flex-col">
   <header
     class="fixed inset-0 z-(--sl-z-index-navbar) box-border h-(--sl-nav-height) w-full border-0 border-b border-solid border-(--sl-color-hairline) bg-(--sl-color-bg-nav) px-(--sl-nav-pad-x) py-(--sl-nav-pad-y) backdrop-blur"
+    transition:persist
   >
     <slot name="header" />
   </header>
