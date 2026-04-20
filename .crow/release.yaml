@@ -30,13 +30,14 @@ steps:
       - "Bump version"
     image: cr.codefloe.com/docker.io/oven/bun:1.3-alpine
     environment:
-      NPM_TOKEN:
-        from_secret: npm_token
+      FORGEJO_TOKEN:
+        from_secret: devxy_bot_issue_token
     commands:
       - bun install --frozen-lockfile
       - bun --filter starlight-celestia-theme build
-      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/starlight-celestia-theme/.npmrc
-      - cd packages/starlight-celestia-theme && npm publish --access public
+      - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > packages/starlight-celestia-theme/.npmrc
+      - echo "registry=https://codefloe.com/api/packages/devxy/npm/" >> packages/starlight-celestia-theme/.npmrc
+      - cd packages/starlight-celestia-theme && npm publish
       - rm -f .npmrc
 
   "Create release":
