@@ -37,6 +37,7 @@ steps:
       - bun --filter starlight-celestia-theme build
       - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > packages/starlight-celestia-theme/.npmrc
       - echo "registry=https://codefloe.com/api/packages/devxy/npm/" >> packages/starlight-celestia-theme/.npmrc
+      - apk add -q --no-cache npm
       - cd packages/starlight-celestia-theme && npm publish
       - rm -f .npmrc
 
