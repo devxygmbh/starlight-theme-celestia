@@ -22,6 +22,7 @@ const components = {
   MobileTableOfContents: "starlight-celestia-theme/components/MobileTableOfContents.astro",
   MobileMenuFooter: "starlight-celestia-theme/components/MobileMenuFooter.astro",
   LanguageSelect: "starlight-celestia-theme/components/LanguageSelect.astro",
+  Head: "starlight-celestia-theme/components/Head.astro",
 } as const satisfies Partial<StarlightConfig["components"]>;
 
 export type { ThemeCelestiaOptions };
