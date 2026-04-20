@@ -1,0 +1,21 @@
+---
+import Default from "@astrojs/starlight/components/SiteTitle.astro";
+import VersionSelect from "./VersionSelect.astro";
+---
+
+<div class="site-title-wrapper">
+  <span
+    class="-m-1.5 rounded-md p-1.5 **:text-lg **:font-semibold **:text-(--sl-color-text) focus-visible:outline-offset-0"
+  >
+    <Default />
+  </span>
+  <VersionSelect />
+</div>
+
+<style>
+  .site-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+</style>

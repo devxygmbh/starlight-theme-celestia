@@ -38,9 +38,18 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
         } else if (options.stylingSystem === "tailwind") {
           useTailwind = true;
         } else {
-          const hasTailwindcss = await checkHasTailwindcss(astroConfig.vite?.plugins);
+          const hasTailwindcss = await checkHasPlugin(astroConfig.vite?.plugins, "tailwind");
           useTailwind = hasTailwindcss;
         }
+
+        // Detect if starlight-versions plugin is configured
+        const hasVersions = await checkHasPlugin(astroConfig.vite?.plugins, "starlight-versions");
+
+        // Use versioned SiteTitle when starlight-versions is detected
+        const resolvedComponents = {
+          ...components,
+          ...(hasVersions ? { SiteTitle: "starlight-celestia-theme/components/SiteTitleVersioned.astro" } : {}),
+        };
 
         const newConfig = {
           customCss: [
@@ -55,7 +64,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
             "starlight-celestia-theme/styles.css",
           ].filter(Boolean),
           components: {
-            ...components,
+            ...resolvedComponents,
             ...config.components,
           },
           expressiveCode: config.expressiveCode ?? false,
@@ -92,7 +101,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
 type ViteUserConfig = AstroConfig["vite"];
 type VitePlugin = NonNullable<ViteUserConfig["plugins"]>[number];
 
-async function checkHasTailwindcss(plugin: VitePlugin | Promise<VitePlugin>): Promise<boolean> {
+async function checkHasPlugin(plugin: VitePlugin | Promise<VitePlugin>, search: string): Promise<boolean> {
   const awaited = await plugin;
 
   if (!awaited) {
@@ -100,12 +109,12 @@ async function checkHasTailwindcss(plugin: VitePlugin | Promise<VitePlugin>): Pr
   }
   if (Array.isArray(awaited)) {
     for (const p of awaited) {
-      if (await checkHasTailwindcss(p)) {
+      if (await checkHasPlugin(p, search)) {
         return true;
       }
     }
     return false;
   }
   const name = awaited.name || "";
-  return name.includes("tailwind");
+  return name.includes(search);
 }

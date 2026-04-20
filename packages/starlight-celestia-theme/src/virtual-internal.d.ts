@@ -9,6 +9,15 @@ declare module "virtual:starlight-celestia-theme/user-config" {
   const config: import("./user-options").ConfigSerialized;
   export default config;
 }
+declare module "virtual:starlight-versions-config" {
+  export interface ConfigSerialized {
+    current: { label: string; redirect?: "same-page" | "root" };
+    versions: Array<{ slug: string; label?: string; redirect?: "same-page" | "root" }>;
+    versionsBySlug: Record<string, unknown>;
+  }
+  const config: ConfigSerialized;
+  export default config;
+}
 declare module "virtual:starlight/components/Search" {
   const Search: typeof import("./components/Search.astro").default;
   export default Search;

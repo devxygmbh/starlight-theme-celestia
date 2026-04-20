@@ -10,6 +10,7 @@ A clean, modern theme for [Astro Starlight](https://starlight.astro.build/), for
 - **3-way theme toggle** — cycles through Auto, Light, and Dark
 - **Warm accent colors** — `#fb923c` (dark) / `#c2410c` (light)
 - **Multi-sidebar ready** — ships `@lorenzo_lewis/starlight-utils` as a dependency
+- **Version dropdown** — built-in `starlight-versions` integration with auto-detected header dropdown
 
 ## Installation
 
@@ -62,6 +63,20 @@ starlightUtils({
   multiSidebar: {
     switcherStyle: "horizontalList",
   },
+});
+```
+
+### Versioning
+
+The theme ships `starlight-versions` as a dependency. When configured, a version dropdown automatically appears next to the site title:
+
+```js
+import starlightVersions from "starlight-versions";
+
+// Inside starlight({ plugins: [...] })
+starlightVersions({
+  current: { label: "v2.0 (latest)" },
+  versions: [{ slug: "v1", label: "v1.0" }],
 });
 ```
 

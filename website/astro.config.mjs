@@ -29,6 +29,7 @@ export default defineConfig({
               ],
             },
             { label: "Multi-Sidebar", link: "/guide/multi-sidebar/" },
+            { label: "Versioning", link: "/guide/versioning/" },
           ],
         },
         {
