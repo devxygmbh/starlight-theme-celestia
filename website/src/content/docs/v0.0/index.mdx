@@ -1,0 +1,39 @@
+---
+title: Celestia Theme
+description: A clean, modern theme for Astro Starlight
+template: splash
+hero:
+  tagline: A beautiful documentation theme with seamless borders, Inter font, and
+    a 3-way theme toggle.
+  actions:
+    - text: Get Started
+      link: /v0.0/guide/getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: View on Git
+      link: https://codefloe.com/devxy/starlight-celestia-theme
+      icon: external
+slug: v0.0
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Features
+
+<CardGrid stagger>
+  <Card title="No Border Clutter" icon="approve-check">
+    Clean, seamless layout without visible borders between content and sidebars.
+  </Card>
+
+<Card title="Inter Font" icon="pencil">
+  Ships with the Inter typeface for excellent readability across all screen sizes.
+</Card>
+
+<Card title="3-Way Theme Toggle" icon="sun">
+  Cycle between Auto, Light, and Dark themes with a single click.
+</Card>
+
+  <Card title="Wider Content" icon="setting">
+    Increased content width for better use of modern wide screens.
+  </Card>
+</CardGrid>

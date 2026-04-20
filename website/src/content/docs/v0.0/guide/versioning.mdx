@@ -1,0 +1,88 @@
+---
+title: Versioning
+description: How to set up multi-version documentation with the Celestia theme.
+slug: v0.0/guide/versioning
+---
+
+The theme has built-in support for `starlight-versions`, showing a version dropdown next to the site title in the header.
+When `starlight-versions` is configured, the dropdown appears automatically.
+
+## Setup
+
+Add `starlightVersions` to your Starlight plugins alongside the theme:
+
+```js
+import starlightCelestiaTheme from "starlight-celestia-theme";
+import starlightVersions from "starlight-versions";
+
+export default defineConfig({
+  integrations: [
+    starlight({
+      plugins: [
+        starlightCelestiaTheme(),
+        starlightVersions({
+          current: { label: "v2.0 (latest)" },
+          versions: [{ slug: "v1", label: "v1.0" }],
+        }),
+      ],
+    }),
+  ],
+});
+```
+
+## How It Works
+
+The theme automatically detects when `starlight-versions` is present and swaps the site title component to include the version dropdown.
+No additional configuration is needed in the theme options.
+
+### Version Configuration
+
+The `starlightVersions` plugin accepts:
+
+- **`current`** — metadata for the current (root) version
+  - `label` — display name (e.g. `"v2.0 (latest)"`)
+  - `redirect` — behavior when switching versions: `"root"` (default) or `"same-page"`
+- **`versions`** — array of archived versions
+  - `slug` — URL prefix for this version's pages (e.g. `"v1"`)
+  - `label` — display name (e.g. `"v1.0"`)
+
+### Creating a Version Snapshot
+
+When you add a new version slug that doesn't have a corresponding directory yet, `starlight-versions` automatically copies your current docs into a directory matching the slug.
+A sidebar config JSON is saved at `src/content/versions/<slug>.json`.
+
+## Customizing the Dropdown
+
+The version dropdown uses the theme's accent colors and appears immediately after the site title in the header.
+To override its appearance, target the `starlight-version-select` custom element in your CSS.
+
+## Suppressing Outdated Banners
+
+By default, `starlight-versions` shows a banner on older version pages warning that the content is outdated.
+To suppress this, override the `Banner` and `PageTitle` components with pass-through versions:
+
+```js
+// astro.config.mjs
+components: {
+  Banner: "./src/components/Banner.astro",
+  PageTitle: "./src/components/PageTitle.astro",
+};
+```
+
+```astro
+---
+// src/components/Banner.astro
+import Default from "@astrojs/starlight/components/Banner.astro";
+---
+
+<Default><slot /></Default>
+```
+
+```astro
+---
+// src/components/PageTitle.astro
+import Default from "@astrojs/starlight/components/PageTitle.astro";
+---
+
+<Default><slot /></Default>
+```
