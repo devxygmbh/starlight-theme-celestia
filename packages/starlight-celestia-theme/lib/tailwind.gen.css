@@ -598,23 +598,6 @@
     scrollbar-width: thin;
     scrollbar-color: var(--sl-color-gray-5) transparent;
   }
-  .\*\*\:text-lg {
-    :is(& *) {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
-    }
-  }
-  .\*\*\:font-semibold {
-    :is(& *) {
-      --tw-font-weight: var(--font-weight-semibold);
-      font-weight: var(--font-weight-semibold);
-    }
-  }
-  .\*\*\:text-\(--sl-color-text\) {
-    :is(& *) {
-      color: var(--sl-color-text);
-    }
-  }
   .group-hover\:-translate-x-1 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
