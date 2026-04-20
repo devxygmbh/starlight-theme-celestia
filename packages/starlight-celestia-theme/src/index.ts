@@ -12,7 +12,7 @@ const components = {
   ThemeProvider: "starlight-celestia-theme/components/ThemeProvider.astro",
   ThemeSelect: "starlight-celestia-theme/components/ThemeSelect.astro",
   SocialIcons: "starlight-celestia-theme/components/SocialIcons.astro",
-  SiteTitle: "starlight-celestia-theme/components/SiteTitle.astro",
+  SiteTitle: "starlight-celestia-theme/components/SiteTitleVersioned.astro",
   PageFrame: "starlight-celestia-theme/components/PageFrame.astro",
   Pagination: "starlight-celestia-theme/components/Pagination.astro",
   MobileMenuToggle: "starlight-celestia-theme/components/MobileMenuToggle.astro",
@@ -42,15 +42,6 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
           useTailwind = hasTailwindcss;
         }
 
-        // Detect if starlight-versions plugin is configured
-        const hasVersions = await checkHasPlugin(astroConfig.vite?.plugins, "starlight-versions");
-
-        // Use versioned SiteTitle when starlight-versions is detected
-        const resolvedComponents = {
-          ...components,
-          ...(hasVersions ? { SiteTitle: "starlight-celestia-theme/components/SiteTitleVersioned.astro" } : {}),
-        };
-
         const newConfig = {
           customCss: [
             "starlight-celestia-theme/layer.css",
@@ -64,7 +55,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
             "starlight-celestia-theme/styles.css",
           ].filter(Boolean),
           components: {
-            ...resolvedComponents,
+            ...components,
             ...config.components,
           },
           expressiveCode: config.expressiveCode ?? false,

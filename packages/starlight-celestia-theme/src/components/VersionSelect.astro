@@ -131,11 +131,14 @@ function getVersionURL(
   return versionURL;
 }
 
+const hasVersions = starlightVersionsConfig.versions.length > 0;
 const { id } = Astro.locals.starlightRoute;
-const pageVersion = getVersionFromSlug(starlightVersionsConfig, id);
+const pageVersion = hasVersions
+  ? getVersionFromSlug(starlightVersionsConfig, id)
+  : undefined;
 ---
 
-<starlight-version-select>
+{hasVersions && <starlight-version-select>
   <label>
     <span class="sr-only">Select version</span>
     <Icon name="open-book" class="icon label-icon" />
@@ -163,7 +166,7 @@ const pageVersion = getVersionFromSlug(starlightVersionsConfig, id);
     </select>
     <Icon name="down-caret" class="icon caret-icon" />
   </label>
-</starlight-version-select>
+</starlight-version-select>}
 
 <style>
   label {
