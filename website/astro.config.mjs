@@ -9,6 +9,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Celestia Theme",
+      logo: {
+        src: "./public/logo.svg",
+      },
       plugins: [
         starlightCelestiaTheme(),
         starlightVersions({
