@@ -33,7 +33,7 @@ steps:
       - rm -rf ./* .[!.]* ..?*
       - mv /tmp/public/* ./ && mv /tmp/.git ./
 
-  - name: 'Push changes to branch'
+  - name: "Push changes to branch"
     image: cr.codefloe.com/docker.io/appleboy/drone-git-push:1.2.2
     settings:
       remote: ${CI_REPO_CLONE_SSH_URL}
@@ -42,6 +42,6 @@ steps:
       force: true
       ssh_key:
         from_secret: devxy_bot_ssh_key
-      commit_message: '[skip ci] Deploy demo site ${CI_COMMIT_SHA}'
+      commit_message: "[skip ci] Deploy demo site ${CI_COMMIT_SHA}"
       author_name: devxy-bot
       author_email: bot@devxy.io

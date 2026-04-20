@@ -7,16 +7,16 @@
  * we don't have those auto-generated files.
  */
 
-declare module 'astro:content' {
+declare module "astro:content" {
   export interface RenderResult {
-    Content: import('astro/runtime/server/index.js').AstroComponentFactory
+    Content: import("astro/runtime/server/index.js").AstroComponentFactory;
   }
 }
 
-type ContentConfig = typeof import('./content.config.js')
+type ContentConfig = typeof import("./content.config.js");
 
-type ReturnTypeOrOriginal<T> = T extends (...args: any[]) => infer R ? R : T
+type ReturnTypeOrOriginal<T> = T extends (...args: any[]) => infer R ? R : T;
 
-export type StarlightRouteEntryData = import('astro/zod').infer<
-  ReturnTypeOrOriginal<Required<ContentConfig['collections']['docs']>['schema']>
->
+export type StarlightRouteEntryData = import("astro/zod").infer<
+  ReturnTypeOrOriginal<Required<ContentConfig["collections"]["docs"]>["schema"]>
+>;

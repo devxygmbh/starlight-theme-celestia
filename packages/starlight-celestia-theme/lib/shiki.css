@@ -1,4 +1,4 @@
-@import 'shiki-twoslash-renderer/style.css';
+@import "shiki-twoslash-renderer/style.css";
 
 .sl-markdown-content .astro-code {
   padding: 0;
@@ -70,8 +70,8 @@
   text-decoration: var(--shiki-light-text-decoration);
 }
 
-html[data-theme='dark'] .astro-code,
-html[data-theme='dark'] .astro-code span {
+html[data-theme="dark"] .astro-code,
+html[data-theme="dark"] .astro-code span {
   color: var(--shiki-dark);
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);

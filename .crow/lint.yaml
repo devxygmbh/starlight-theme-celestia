@@ -1,0 +1,47 @@
+when:
+  - event: pull_request
+  - event: push
+    branch: ${CI_REPO_DEFAULT_BRANCH}
+
+variables:
+  - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.3-alpine"
+
+steps:
+  install-dependencies:
+    image: *bun_image
+    commands:
+      - bun install --frozen-lockfile
+
+  prettier:
+    depends_on:
+      - install-dependencies
+    image: cr.codefloe.com/docker.io/woodpeckerci/plugin-prettier:1.4.1
+
+  build:
+    depends_on:
+      - install-dependencies
+    image: *bun_image
+    commands:
+      - bun --filter starlight-celestia-theme build
+      # Create npx wrapper for Pagefind compatibility
+      - |
+        cat > /usr/local/bin/npx << 'EOF'
+        #!/bin/sh
+        args=""
+        for arg in "$@"; do
+          if [ "$arg" != "-y" ]; then
+            args="$args $arg"
+          fi
+        done
+        exec bun x $args
+        EOF
+      - chmod +x /usr/local/bin/npx
+      - bun --filter starlight-celestia-theme-website build
+
+  commitlint:
+    when:
+      - event: pull_request
+      - event: pull_request_edited
+    image: cr.codefloe.com/docker.io/commitlint/commitlint:20.5.1
+    commands:
+      - echo $${CI_COMMIT_PULL_REQUEST_TITLE} | commitlint

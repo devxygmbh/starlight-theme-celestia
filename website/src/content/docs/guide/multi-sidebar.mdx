@@ -10,7 +10,7 @@ The theme ships `@lorenzo_lewis/starlight-utils` as a dependency, making it easy
 Add `starlightUtils` to your Starlight plugins alongside the theme:
 
 ```js
-import starlightUtils from '@lorenzo_lewis/starlight-utils'
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 export default defineConfig({
   integrations: [
@@ -19,23 +19,23 @@ export default defineConfig({
         starlightCelestiaTheme(),
         starlightUtils({
           multiSidebar: {
-            switcherStyle: 'horizontalList',
+            switcherStyle: "horizontalList",
           },
         }),
       ],
       sidebar: [
         {
-          label: 'Guide',
-          autogenerate: { directory: 'guide' },
+          label: "Guide",
+          autogenerate: { directory: "guide" },
         },
         {
-          label: 'API',
-          autogenerate: { directory: 'api' },
+          label: "API",
+          autogenerate: { directory: "api" },
         },
       ],
     }),
   ],
-})
+});
 ```
 
 ## Switcher Styles
@@ -51,9 +51,9 @@ A compact dropdown menu for switching between sidebars.
 ```js
 starlightUtils({
   multiSidebar: {
-    switcherStyle: 'dropdown',
+    switcherStyle: "dropdown",
   },
-})
+});
 ```
 
 ### Hidden
@@ -63,9 +63,9 @@ Hides the switcher entirely. Useful when combined with top navigation links.
 ```js
 starlightUtils({
   multiSidebar: {
-    switcherStyle: 'hidden',
+    switcherStyle: "hidden",
   },
-})
+});
 ```
 
 ## Sidebar Configuration

@@ -24,7 +24,7 @@
   --sl-color-accent-high: #fb923c;
 }
 
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   --sl-color-accent-low: color-mix(in oklch, #c2410c 10%, #f3f4f6);
   --sl-color-accent: #c2410c;
   --sl-color-accent-high: #c2410c;

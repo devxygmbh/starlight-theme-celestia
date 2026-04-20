@@ -1,2 +1,2 @@
-import 'astro/client'
-import '@astrojs/starlight'
+import "astro/client";
+import "@astrojs/starlight";

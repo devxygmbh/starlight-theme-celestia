@@ -5,13 +5,13 @@ import {
   transformerRemoveNotationEscape,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
-} from '@shikijs/transformers'
-import { transformerTwoslash } from '@shikijs/twoslash'
-import type { ShikiTransformer } from '@shikijs/types'
-import type { ShikiConfig } from 'astro'
-import { createRenderer } from 'shiki-twoslash-renderer'
+} from "@shikijs/transformers";
+import { transformerTwoslash } from "@shikijs/twoslash";
+import type { ShikiTransformer } from "@shikijs/types";
+import type { ShikiConfig } from "astro";
+import { createRenderer } from "shiki-twoslash-renderer";
 
-import { transformerContainer } from './shiki-transformer-container'
+import { transformerContainer } from "./shiki-transformer-container";
 
 export function createShikiConfig(options: { twoslash: boolean }): ShikiConfig {
   const transformers: ShikiTransformer[] = [
@@ -36,14 +36,14 @@ export function createShikiConfig(options: { twoslash: boolean }): ShikiConfig {
           }),
         ]
       : []),
-  ]
+  ];
 
   return {
     themes: {
-      light: 'one-light',
-      dark: 'github-dark-dimmed',
+      light: "one-light",
+      dark: "github-dark-dimmed",
     },
     defaultColor: false,
     transformers: transformers,
-  }
+  };
 }

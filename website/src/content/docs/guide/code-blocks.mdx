@@ -11,13 +11,13 @@ Use fenced code blocks with a language identifier:
 
 ```typescript
 interface User {
-  name: string
-  email: string
-  role: 'admin' | 'user'
+  name: string;
+  email: string;
+  role: "admin" | "user";
 }
 
 function greet(user: User): string {
-  return `Hello, ${user.name}!`
+  return `Hello, ${user.name}!`;
 }
 ```
 
@@ -27,10 +27,10 @@ Highlight specific lines using the `{lines}` syntax in the code fence meta:
 
 ```typescript {2,4}
 const config = {
-  theme: 'celestia',
+  theme: "celestia",
   sidebar: true,
   multiSidebar: true,
-}
+};
 ```
 
 ## Diff Notation
@@ -39,9 +39,9 @@ Use `// [!code ++]` and `// [!code --]` for diff annotations:
 
 ```typescript
 const config = {
-  theme: 'nova', // [!code --]
-  theme: 'celestia', // [!code ++]
-}
+  theme: "nova", // [!code --]
+  theme: "celestia", // [!code ++]
+};
 ```
 
 ## Themes

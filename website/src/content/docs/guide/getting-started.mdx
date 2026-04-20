@@ -16,27 +16,23 @@ bun add git+ssh://git@codefloe.com/devxy/starlight-celestia-theme.git
 Add the theme plugin to your `astro.config.mjs`:
 
 ```js
-import { defineConfig } from 'astro/config'
-import starlight from '@astrojs/starlight'
-import starlightCelestiaTheme from 'starlight-celestia-theme'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
+import starlightCelestiaTheme from "starlight-celestia-theme";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
-      plugins: [
-        starlightCelestiaTheme(),
-      ],
-      sidebar: [
-        { label: 'Guide', autogenerate: { directory: 'guide' } },
-      ],
+      title: "My Docs",
+      plugins: [starlightCelestiaTheme()],
+      sidebar: [{ label: "Guide", autogenerate: { directory: "guide" } }],
     }),
   ],
   vite: {
     plugins: [tailwindcss()],
   },
-})
+});
 ```
 
 ## Options
@@ -50,10 +46,10 @@ An array of navigation items to display in the header bar.
 ```js
 starlightCelestiaTheme({
   nav: [
-    { label: 'Blog', href: '/blog' },
-    { label: 'GitHub', href: 'https://github.com' },
+    { label: "Blog", href: "/blog" },
+    { label: "GitHub", href: "https://github.com" },
   ],
-})
+});
 ```
 
 ### `stylingSystem`
@@ -62,8 +58,8 @@ Controls whether to use Tailwind CSS or plain CSS. Defaults to `"detect"` which 
 
 ```js
 starlightCelestiaTheme({
-  stylingSystem: 'tailwind', // or 'css' or 'detect'
-})
+  stylingSystem: "tailwind", // or 'css' or 'detect'
+});
 ```
 
 ## Multi-Sidebar
@@ -72,14 +68,14 @@ The theme ships `@lorenzo_lewis/starlight-utils` as a dependency for easy multi-
 Add it alongside the theme plugin:
 
 ```js
-import starlightUtils from '@lorenzo_lewis/starlight-utils'
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 // Inside starlight({ plugins: [...] })
 starlightUtils({
   multiSidebar: {
-    switcherStyle: 'horizontalList', // or 'dropdown' or 'hidden'
+    switcherStyle: "horizontalList", // or 'dropdown' or 'hidden'
   },
-})
+});
 ```
 
 Each top-level group in your `sidebar` config becomes an independent switchable sidebar.

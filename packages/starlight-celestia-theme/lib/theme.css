@@ -2,7 +2,7 @@
 ::backdrop {
   --sl-content-width: 55rem;
   --sl-sidebar-width: 17rem;
-  --sl-font: 'Inter', system-ui, sans-serif;
+  --sl-font: "Inter", system-ui, sans-serif;
 
   /* Prevent adjustments of font size after orientation changes in iOS. */
   -webkit-text-size-adjust: 100%;
@@ -47,7 +47,7 @@
 }
 
 /* Light mode Starlight theme variables */
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   --sl-color-white: var(--color-gray-900);
   --sl-color-gray-1: var(--color-gray-800);
   --sl-color-gray-2: var(--color-gray-700);

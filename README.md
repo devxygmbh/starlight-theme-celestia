@@ -20,23 +20,19 @@ bun add git+ssh://git@codefloe.com/devxy/starlight-celestia-theme.git
 ## Usage
 
 ```js
-import { defineConfig } from 'astro/config'
-import starlight from '@astrojs/starlight'
-import starlightCelestiaTheme from 'starlight-celestia-theme'
+import { defineConfig } from "astro/config";
+import starlight from "@astrojs/starlight";
+import starlightCelestiaTheme from "starlight-celestia-theme";
 
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
-      plugins: [
-        starlightCelestiaTheme(),
-      ],
-      sidebar: [
-        { label: 'Guide', autogenerate: { directory: 'guide' } },
-      ],
+      title: "My Docs",
+      plugins: [starlightCelestiaTheme()],
+      sidebar: [{ label: "Guide", autogenerate: { directory: "guide" } }],
     }),
   ],
-})
+});
 ```
 
 ### Options
@@ -45,12 +41,12 @@ export default defineConfig({
 starlightCelestiaTheme({
   // Navigation items in the header bar
   nav: [
-    { label: 'Blog', href: '/blog' },
-    { label: 'GitHub', href: 'https://github.com' },
+    { label: "Blog", href: "/blog" },
+    { label: "GitHub", href: "https://github.com" },
   ],
   // CSS delivery mode: 'detect' (default), 'css', or 'tailwind'
-  stylingSystem: 'detect',
-})
+  stylingSystem: "detect",
+});
 ```
 
 ### Multi-Sidebar
@@ -59,14 +55,14 @@ The theme ships `@lorenzo_lewis/starlight-utils` as a dependency.
 Add it alongside the theme plugin:
 
 ```js
-import starlightUtils from '@lorenzo_lewis/starlight-utils'
+import starlightUtils from "@lorenzo_lewis/starlight-utils";
 
 // Inside starlight({ plugins: [...] })
 starlightUtils({
   multiSidebar: {
-    switcherStyle: 'horizontalList',
+    switcherStyle: "horizontalList",
   },
-})
+});
 ```
 
 ## Development

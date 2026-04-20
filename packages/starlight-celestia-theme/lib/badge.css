@@ -9,7 +9,7 @@
   --sl-badge-danger-text: var(--sl-color-red-high);
 }
 
-[data-theme='light'] .sl-badge {
+[data-theme="light"] .sl-badge {
   --sl-badge-tip-bg: var(--sl-color-purple-low);
   --sl-badge-tip-text: var(--sl-color-purple-high);
   --sl-badge-caution-bg: var(--sl-color-orange-low);
