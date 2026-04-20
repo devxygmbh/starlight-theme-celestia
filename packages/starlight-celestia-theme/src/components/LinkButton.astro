@@ -1,0 +1,47 @@
+---
+import type { StarlightIcon } from '@astrojs/starlight/types'
+import type { HTMLAttributes } from 'astro/types'
+import LinkButtonIcon from './LinkButtonIcon.astro'
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href'> {
+  href: string | URL
+  icon?: StarlightIcon | undefined
+  iconPlacement?: 'start' | 'end' | undefined
+  variant?: 'primary' | 'secondary' | 'minimal'
+}
+
+const {
+  class: className,
+  icon,
+  iconPlacement = 'end',
+  variant = 'primary',
+  ...attrs
+} = Astro.props
+---
+
+<span
+  class:list={[
+    'not-content',
+    'inline-flex items-center justify-center align-middle',
+  ]}
+>
+  <a
+    class:list={[
+      'not-content',
+      'group me-2 mt-2 mb-2 inline-flex items-center justify-between gap-2 rounded-xl border border-solid border-transparent px-6 py-3 font-medium no-underline transition active:scale-97',
+      variant === 'primary'
+        ? 'bg-black text-white shadow-sm hover:bg-gray-800 hover:shadow-md dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300'
+        : undefined,
+      variant === 'secondary'
+        ? 'border-(--sl-color-gray-5) bg-white text-gray-700 shadow-sm hover:bg-gray-50 hover:shadow-md dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700'
+        : undefined,
+      variant === 'minimal' ? 'text-gray-700 dark:text-gray-200' : undefined,
+      className,
+    ]}
+    {...attrs}
+  >
+    {icon && iconPlacement === 'start' && <LinkButtonIcon icon={icon} />}
+    <slot />
+    {icon && iconPlacement === 'end' && <LinkButtonIcon icon={icon} />}
+  </a>
+</span>

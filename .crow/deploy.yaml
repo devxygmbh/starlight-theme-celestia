@@ -1,0 +1,47 @@
+when:
+  - event: push
+    branch: ${CI_REPO_DEFAULT_BRANCH}
+  - event: manual
+
+steps:
+  - name: Build
+    image: cr.codefloe.com/docker.io/oven/bun:1.3
+    commands:
+      - bun install
+      - bun --filter starlight-celestia-theme build
+      # Create npx wrapper for Pagefind compatibility
+      - |
+        cat > /usr/local/bin/npx << 'EOF'
+        #!/bin/sh
+        # Strip -y flag and forward to bun x
+        args=""
+        for arg in "$@"; do
+          if [ "$arg" != "-y" ]; then
+            args="$args $arg"
+          fi
+        done
+        exec bun x $args
+        EOF
+      - chmod +x /usr/local/bin/npx
+      - bun --filter starlight-celestia-theme-website build
+
+  - name: Deploy preparation
+    image: cr.codefloe.com/docker.io/library/alpine:3.23
+    commands:
+      - mv website/dist/ /tmp/public
+      - mv .git /tmp/.git
+      - rm -rf ./* .[!.]* ..?*
+      - mv /tmp/public/* ./ && mv /tmp/.git ./
+
+  - name: 'Push changes to branch'
+    image: cr.codefloe.com/docker.io/appleboy/drone-git-push:1.2.2
+    settings:
+      remote: ${CI_REPO_CLONE_SSH_URL}
+      branch: pages
+      commit: true
+      force: true
+      ssh_key:
+        from_secret: devxy_bot_ssh_key
+      commit_message: '[skip ci] Deploy demo site ${CI_COMMIT_SHA}'
+      author_name: devxy-bot
+      author_email: bot@devxy.io

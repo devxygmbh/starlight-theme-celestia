@@ -1,0 +1,55 @@
+{
+  "name": "starlight-celestia-theme",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "A clean, modern theme for Astro Starlight",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*.css": "./lib/*.css",
+    "./components": "./src/components/index.ts",
+    "./components/*.astro": "./src/components/*.astro"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "bun run build:tailwindcss",
+    "build:tailwindcss": "tailwindcss -i ./lib/tailwind.build.css -o ./lib/tailwind.gen.css"
+  },
+  "dependencies": {
+    "@aria-ui/core": "^0.2.0",
+    "@aria-ui/utils": "^0.1.5",
+    "@fontsource/inter": "^5.0.0",
+    "@lorenzo_lewis/starlight-utils": "^0.3.0",
+    "@pagefind/default-ui": "^1.5.2",
+    "@shikijs/transformers": "^4.0.2",
+    "@shikijs/twoslash": "^4.0.2",
+    "@shikijs/types": "^4.0.2",
+    "@types/hast": "^3.0.4",
+    "hast-util-is-element": "^3.0.0",
+    "rehype": "^13.0.2",
+    "remark-custom-header-id": "^1.0.0",
+    "shiki-twoslash-renderer": "^0.3.3"
+  },
+  "peerDependencies": {
+    "@astrojs/starlight": "*"
+  },
+  "peerDependenciesMeta": {
+    "@astrojs/starlight": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@astrojs/starlight": "^0.38.3",
+    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^20.17.30",
+    "astro": "^6.1.6",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
+  }
+}

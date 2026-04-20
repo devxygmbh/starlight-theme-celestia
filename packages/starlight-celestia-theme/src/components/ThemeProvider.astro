@@ -1,0 +1,84 @@
+{/* This is intentionally inlined to avoid FOUC. */}
+<script is:inline>
+  // Inject persistent sidebar/tab overrides that survive View Transitions.
+  // This runs before any content renders and on every navigation.
+  if (!document.getElementById('celestia-sidebar-overrides')) {
+    const s = document.createElement('style');
+    s.id = 'celestia-sidebar-overrides';
+    s.textContent = `
+      .sidebar-content a {
+        transition: none !important;
+        background-color: transparent !important;
+        background: none !important;
+      }
+      .sidebar-content a[aria-current="page"] {
+        color: var(--sl-color-white) !important;
+        border-left: 2px solid var(--sl-color-accent-high) !important;
+        border-radius: 0 !important;
+        padding-left: 0.5em !important;
+      }
+      [role="tablist"] [role="tab"] {
+        border: none !important;
+        box-shadow: inset 0 -1px 0 var(--sl-color-gray-5) !important;
+      }
+      [role="tablist"] [role="tab"][aria-selected="true"] {
+        box-shadow: inset 0 -2px 0 var(--sl-color-accent-high) !important;
+      }
+    `;
+    document.head.prepend(s);
+  }
+
+  window.StarlightThemeProvider = (() => {
+    const storedTheme =
+      typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+    const theme =
+      storedTheme ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+    // Set theme immediately before any styles load
+    document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+    document.documentElement.style.colorScheme = theme === 'light' ? 'light' : 'dark';
+
+    // Add class to prevent transitions during initial load
+    document.documentElement.classList.add('loading');
+
+    // Disable transitions temporarily to prevent color flash on load
+    const style = document.createElement('style');
+    style.textContent = `
+      .loading *, .loading *::before, .loading *::after {
+        transition: none !important;
+        animation-duration: 0s !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Re-enable transitions after page is fully loaded
+    const enableTransitions = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.documentElement.classList.remove('loading');
+          style.remove();
+        });
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', enableTransitions);
+    } else {
+      enableTransitions();
+    }
+
+    return {
+      updatePickers(theme) {
+        if (theme === undefined) {
+          var stored = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+          theme = stored || 'auto';
+        }
+        document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+          const select = picker.querySelector('select');
+          if (select) select.value = theme;
+        });
+      },
+    };
+  })();
+</script>

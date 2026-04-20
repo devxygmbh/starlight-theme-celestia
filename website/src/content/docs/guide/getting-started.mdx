@@ -1,0 +1,95 @@
+---
+title: Getting Started
+description: How to install and use the Celestia theme for Starlight.
+---
+
+## Installation
+
+Install the theme package:
+
+```bash
+bun add git+ssh://git@codefloe.com/devxy/starlight-celestia-theme.git
+```
+
+## Configuration
+
+Add the theme plugin to your `astro.config.mjs`:
+
+```js
+import { defineConfig } from 'astro/config'
+import starlight from '@astrojs/starlight'
+import starlightCelestiaTheme from 'starlight-celestia-theme'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  integrations: [
+    starlight({
+      title: 'My Docs',
+      plugins: [
+        starlightCelestiaTheme(),
+      ],
+      sidebar: [
+        { label: 'Guide', autogenerate: { directory: 'guide' } },
+      ],
+    }),
+  ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+})
+```
+
+## Options
+
+The theme accepts the following options:
+
+### `nav`
+
+An array of navigation items to display in the header bar.
+
+```js
+starlightCelestiaTheme({
+  nav: [
+    { label: 'Blog', href: '/blog' },
+    { label: 'GitHub', href: 'https://github.com' },
+  ],
+})
+```
+
+### `stylingSystem`
+
+Controls whether to use Tailwind CSS or plain CSS. Defaults to `"detect"` which auto-detects Tailwind in your project.
+
+```js
+starlightCelestiaTheme({
+  stylingSystem: 'tailwind', // or 'css' or 'detect'
+})
+```
+
+## Multi-Sidebar
+
+The theme ships `@lorenzo_lewis/starlight-utils` as a dependency for easy multi-sidebar support.
+Add it alongside the theme plugin:
+
+```js
+import starlightUtils from '@lorenzo_lewis/starlight-utils'
+
+// Inside starlight({ plugins: [...] })
+starlightUtils({
+  multiSidebar: {
+    switcherStyle: 'horizontalList', // or 'dropdown' or 'hidden'
+  },
+})
+```
+
+Each top-level group in your `sidebar` config becomes an independent switchable sidebar.
+
+## Features
+
+- **No sidebar borders** — Clean, seamless layout
+- **Inter font** — Self-hosted via `@fontsource/inter`, 14px base size
+- **Wider content** — `55rem` content width (up from default `50rem`)
+- **Narrower sidebars** — `17rem` sidebars for better content focus
+- **3-way theme toggle** — Cycles through Auto, Light, and Dark
+- **Warm accent colors** — `#fb923c` (dark) / `#c2410c` (light)
+- **Multi-sidebar ready** — Ships `@lorenzo_lewis/starlight-utils` for multi-column sidebar support

@@ -1,0 +1,28 @@
+{
+  "name": "starlight-celestia-theme-monorepo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Root package for the Starlight Celestia theme monorepo",
+  "workspaces": [
+    "website",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun --filter '*' dev",
+    "build": "turbo run build",
+    "preview": "bun run build && bun --filter starlight-celestia-theme-website preview",
+    "build:tailwindcss": "bun --filter starlight-celestia-theme build",
+    "typecheck": "tsc -b"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.30",
+    "turbo": "^2.9.6",
+    "typescript": "^5.9.3"
+  },
+  "trustedDependencies": [
+    "sharp",
+    "esbuild",
+    "@parcel/watcher"
+  ]
+}

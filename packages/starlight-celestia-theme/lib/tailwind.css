@@ -1,0 +1,29 @@
+@source '../src/**/*.ts';
+@source '../src/**/*.astro';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  /*
+   Match Starlight breakpoints
+   https://github.com/withastro/starlight/blob/893be3b4a106ab75b706142bbd06b00268ccc298/packages/starlight/style/util.css#L22-L43
+  */
+  --breakpoint-md: 50rem;
+  --breakpoint-lg: 72rem;
+}
+
+@layer utilities {
+  /* Wire up Starlight theme to use Tailwind config. */
+  :root {
+    --sl-font-mono: var(--font-mono);
+  }
+}
+
+@utility celestia-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sl-color-gray-5) transparent;
+}
+
+.sl-markdown-content .code-tabs .tablist-wrapper {
+  @apply celestia-scroll-container;
+}

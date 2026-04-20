@@ -1,0 +1,31 @@
+@layer base, starlight, celestia, theme, components, utilities;
+
+:root,
+::backdrop {
+  font-size: 14px;
+  --sl-text-body: 0.9rem;
+  --sl-text-h1: 1.45rem;
+  --sl-text-h2: 1.2rem;
+  --sl-text-h3: 1.05rem;
+  --sl-text-h4: 0.95rem;
+  --sl-text-h5: 0.85rem;
+  --sl-text-h6: 0.8rem;
+  --sl-text-code: 0.8rem;
+  --sl-text-code-sm: 0.75rem;
+
+  --celestia-secondary-light: #c2410c;
+  --celestia-secondary-dark: #fb923c;
+}
+
+/* Dark mode accents — must load first to prevent flash */
+:root {
+  --sl-color-accent-low: color-mix(in oklch, #fb923c 15%, #030712);
+  --sl-color-accent: #fb923c;
+  --sl-color-accent-high: #fb923c;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: color-mix(in oklch, #c2410c 10%, #f3f4f6);
+  --sl-color-accent: #c2410c;
+  --sl-color-accent-high: #c2410c;
+}

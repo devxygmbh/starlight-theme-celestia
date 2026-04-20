@@ -1,0 +1,22 @@
+---
+import { Icon } from '@astrojs/starlight/components'
+import type { StarlightIcon } from '@astrojs/starlight/types'
+import ArrowRightIcon from '../icons/lucide-arrow-right.svg'
+import ArrowLeftIcon from '../icons/lucide-arrow-left.svg'
+
+interface Props {
+  icon: StarlightIcon
+}
+
+const { icon } = Astro.props
+---
+
+{
+  icon === 'right-arrow' ? (
+    <ArrowRightIcon class="block size-5 transition group-hover:translate-x-1" />
+  ) : icon === 'left-arrow' ? (
+    <ArrowLeftIcon class="block size-5 transition group-hover:-translate-x-1" />
+  ) : (
+    <Icon name={icon} size="1.25rem" />
+  )
+}

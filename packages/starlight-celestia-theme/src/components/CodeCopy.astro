@@ -1,0 +1,39 @@
+<script>
+  import ClipboardIcon from '../icons/lucide-clipboard.svg?raw'
+  import CheckIcon from '../icons/lucide-check.svg?raw'
+
+  class CodeCopyButton extends HTMLElement {
+    constructor() {
+      super()
+    }
+
+    connectedCallback() {
+      const update = () => {
+        const iconHtml = state === 'ready' ? ClipboardIcon : CheckIcon
+        this.innerHTML =
+          '<span class="w-full h-full block [&_svg]:w-full [&_svg]:h-full">' +
+          iconHtml +
+          '</span>'
+      }
+
+      let state: 'ready' | 'success' = 'ready'
+      update()
+
+      this.addEventListener('click', () => {
+        if (state === 'ready') {
+          state = 'success'
+          update()
+
+          const code = this.dataset.code || ''
+          void navigator.clipboard.writeText(code)
+          setTimeout(() => {
+            state = 'ready'
+            update()
+          }, 1500)
+        }
+      })
+    }
+  }
+
+  customElements.define('celestia-code-copy-button', CodeCopyButton)
+</script>

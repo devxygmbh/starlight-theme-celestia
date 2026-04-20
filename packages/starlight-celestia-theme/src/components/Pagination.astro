@@ -1,0 +1,34 @@
+---
+import PaginationLink from './PaginationLink.astro'
+
+const { dir, pagination } = Astro.locals.starlightRoute
+const { prev, next } = pagination
+const isRtl = dir === 'rtl'
+---
+
+<div
+  class="flex min-w-full flex-row items-stretch justify-between gap-2 px-1 pt-0 pb-6 print:hidden"
+  dir={dir}
+>
+  {
+    prev && (
+      <PaginationLink
+        label={prev.label}
+        href={prev.href}
+        rel="prev"
+        side={isRtl ? 'right' : 'left'}
+      />
+    )
+  }
+  <div class="flex-1"></div>
+  {
+    next && (
+      <PaginationLink
+        label={next.label}
+        href={next.href}
+        rel="next"
+        side={isRtl ? 'left' : 'right'}
+      />
+    )
+  }
+</div>

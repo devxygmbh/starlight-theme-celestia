@@ -1,0 +1,19 @@
+{
+  "name": "starlight-celestia-theme-website",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.38.3",
+    "astro": "^6.1.6",
+    "@lorenzo_lewis/starlight-utils": "^0.3.0",
+    "sharp": "^0.34.2",
+    "starlight-celestia-theme": "workspace:*"
+  },
+  "devDependencies": {}
+}
