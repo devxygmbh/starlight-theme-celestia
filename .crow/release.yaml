@@ -1,0 +1,65 @@
+when:
+  - event: tag
+
+clone:
+  git:
+    image: codefloe.com/crow-plugins/clone:1.0.3
+    settings:
+      tags: true
+
+steps:
+  changelog:
+    image: cr.codefloe.com/docker.io/thegeeklab/git-sv:2.0.11
+    commands:
+      - apk add --no-cache -q sed
+      - git sv current-version
+      - git sv release-notes -t ${CI_COMMIT_TAG} -o CHANGELOG.md
+      - sed -i '1,2d' CHANGELOG.md
+      - cat CHANGELOG.md
+
+  "Bump version":
+    image: cr.codefloe.com/docker.io/library/alpine:3.23
+    commands:
+      - apk add -q --no-cache sed
+      - VERSION="${CI_COMMIT_TAG#v}"
+      - sed -i "s/\"version\":\ \"[^\"]*\"/\"version\":\ \"$VERSION\"/" packages/starlight-celestia-theme/package.json
+      - echo "Updated package.json to version $VERSION"
+
+  publish:
+    depends_on:
+      - "Bump version"
+    image: cr.codefloe.com/docker.io/oven/bun:1.3-alpine
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
+    commands:
+      - bun install --frozen-lockfile
+      - bun --filter starlight-celestia-theme build
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > packages/starlight-celestia-theme/.npmrc
+      - cd packages/starlight-celestia-theme && npm publish --access public
+      - rm -f .npmrc
+
+  "Create release":
+    depends_on:
+      - changelog
+    image: cr.codefloe.com/docker.io/woodpeckerci/plugin-release:0.3.0
+    settings:
+      note: CHANGELOG.md
+      api_key:
+        from_secret: devxy_bot_issue_token
+      title: ${CI_COMMIT_TAG}
+
+  "Push changes to repo":
+    depends_on:
+      - publish
+    image: cr.codefloe.com/docker.io/appleboy/drone-git-push:1.2.2
+    settings:
+      remote: ${CI_REPO_CLONE_SSH_URL}
+      branch: main
+      commit: true
+      rebase: true
+      ssh_key:
+        from_secret: devxy_bot_ssh_key
+      commit_message: "[skip ci] Bump version to ${CI_COMMIT_TAG}"
+      author_name: devxy-bot
+      author_email: bot@devxy.io
