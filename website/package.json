@@ -13,7 +13,8 @@
     "astro": "^6.1.6",
     "@lorenzo_lewis/starlight-utils": "^0.3.0",
     "sharp": "^0.34.2",
-    "starlight-celestia-theme": "workspace:*"
+    "starlight-celestia-theme": "workspace:*",
+    "starlight-versions": "^0.8.0"
   },
   "devDependencies": {}
 }

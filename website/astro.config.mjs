@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightCelestiaTheme from "starlight-celestia-theme";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
+import starlightVersions from "starlight-versions";
 
 export default defineConfig({
   integrations: [
@@ -10,6 +11,10 @@ export default defineConfig({
       title: "Celestia Theme",
       plugins: [
         starlightCelestiaTheme(),
+        starlightVersions({
+          current: { label: "v0.1 (latest)" },
+          versions: [{ slug: "v0.0", label: "v0.0" }],
+        }),
         starlightUtils({
           multiSidebar: {
             switcherStyle: "horizontalList",
