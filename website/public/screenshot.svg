@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#1e1e2e"/>
+  <rect x="0" y="0" width="800" height="36" fill="#313244"/>
+  <circle cx="20" cy="18" r="6" fill="#f38ba8"/>
+  <circle cx="40" cy="18" r="6" fill="#a6e3a1"/>
+  <circle cx="60" cy="18" r="6" fill="#f9e2af"/>
+  <text x="400" y="22" text-anchor="middle" fill="#cdd6f4" font-family="monospace" font-size="13">Terminal — docs</text>
+  <text x="30" y="70" fill="#89b4fa" font-family="monospace" font-size="14">$ bun --filter starlight-celestia-theme-website dev</text>
+  <text x="30" y="95" fill="#a6adc8" font-family="monospace" font-size="14">astro v6.1.8 ready in 1021 ms</text>
+  <text x="30" y="120" fill="#a6adc8" font-family="monospace" font-size="14">┃ Local    http://localhost:4321/</text>
+  <text x="30" y="145" fill="#a6adc8" font-family="monospace" font-size="14">┃ Network  use --host to expose</text>
+  <text x="30" y="170" fill="#a6adc8" font-family="monospace" font-size="14">watching for file changes...</text>
+  <text x="30" y="210" fill="#89b4fa" font-family="monospace" font-size="14">$</text>
+  <rect x="38" y="198" width="8" height="16" fill="#cdd6f4" opacity="0.7"/>
+</svg>
