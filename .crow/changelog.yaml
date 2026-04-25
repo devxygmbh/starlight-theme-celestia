@@ -13,7 +13,7 @@ steps:
     environment:
       ISSUE_TOKEN:
         from_secret: codefloe_issue_rw_token_devxy_bot
-    image: cr.codefloe.com/docker.io/thegeeklab/git-sv:2.0.11
+    image: cr.codefloe.com/docker.io/thegeeklab/git-sv:2.1.0
     commands: |
       apk add -q --no-cache curl jq sed
 
