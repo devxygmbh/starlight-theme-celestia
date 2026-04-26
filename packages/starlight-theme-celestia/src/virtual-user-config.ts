@@ -17,7 +17,7 @@ const VERSIONS_FALLBACK = `export default ${JSON.stringify({
 export function vitePluginUserConfig(config: ConfigSerialized): NonNullable<ViteUserConfig["plugins"]>[number] {
   /** Map of virtual module names to their code contents as strings. */
   const modules = {
-    "virtual:starlight-celestia-theme/user-config": `export default ${JSON.stringify(config)}`,
+    "virtual:starlight-theme-celestia/user-config": `export default ${JSON.stringify(config)}`,
   } satisfies Record<string, string>;
 
   /** Mapping names prefixed with `\0` to their original form. */
@@ -26,7 +26,7 @@ export function vitePluginUserConfig(config: ConfigSerialized): NonNullable<Vite
   );
 
   return {
-    name: "vite-plugin-starlight-celestia-theme-user-config",
+    name: "vite-plugin-starlight-theme-celestia-user-config",
     // enforce 'post' so starlight-versions' real config takes precedence over our fallback
     enforce: "post" as const,
     resolveId(id): string | void {

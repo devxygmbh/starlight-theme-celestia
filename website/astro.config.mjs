@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightCelestiaTheme from "starlight-celestia-theme";
+import starlightCelestiaTheme from "starlight-theme-celestia";
 import starlightUtils from "@lorenzo_lewis/starlight-utils";
 import starlightVersions from "starlight-versions";
 

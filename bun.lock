@@ -3,15 +3,15 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "starlight-celestia-theme-monorepo",
+      "name": "starlight-theme-celestia-monorepo",
       "devDependencies": {
         "@types/node": "^20.17.30",
         "turbo": "^2.9.6",
         "typescript": "^5.9.3",
       },
     },
-    "packages/starlight-celestia-theme": {
-      "name": "starlight-celestia-theme",
+    "packages/starlight-theme-celestia": {
+      "name": "starlight-theme-celestia",
       "version": "0.1.0",
       "dependencies": {
         "@aria-ui/core": "^0.2.0",
@@ -46,14 +46,14 @@
       ],
     },
     "website": {
-      "name": "starlight-celestia-theme-website",
+      "name": "starlight-theme-celestia-website",
       "version": "0.0.0",
       "dependencies": {
         "@astrojs/starlight": "^0.38.3",
         "@lorenzo_lewis/starlight-utils": "^0.3.0",
         "astro": "^6.1.6",
         "sharp": "^0.34.2",
-        "starlight-celestia-theme": "workspace:*",
+        "starlight-theme-celestia": "workspace:*",
         "starlight-versions": "^0.8.0",
       },
     },
@@ -1000,9 +1000,9 @@
 
     "space-separated-tokens": ["space-separated-tokens@2.0.2", "", {}, "sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q=="],
 
-    "starlight-celestia-theme": ["starlight-celestia-theme@workspace:packages/starlight-celestia-theme"],
+    "starlight-theme-celestia": ["starlight-theme-celestia@workspace:packages/starlight-theme-celestia"],
 
-    "starlight-celestia-theme-website": ["starlight-celestia-theme-website@workspace:website"],
+    "starlight-theme-celestia-website": ["starlight-theme-celestia-website@workspace:website"],
 
     "starlight-versions": ["starlight-versions@0.8.1", "", { "dependencies": { "@pagefind/default-ui": "^1.3.0", "github-slugger": "^2.0.0", "mdast-util-mdx-jsx": "^3.2.0", "mdast-util-mdxjs-esm": "^2.0.1", "remark": "^15.0.1", "remark-directive": "^4.0.0", "remark-frontmatter": "^5.0.0", "remark-mdx": "^3.1.1", "unist-util-visit": "^5.1.0", "vfile": "^6.0.3", "yaml": "^2.8.2" }, "peerDependencies": { "@astrojs/starlight": ">=0.38.0" } }, "sha512-b8fGFnYDI1vC1x/kFuEchr7zBd6hY/V9UUUFsyxGK/ZejKVpLNOFAblvzVDj8Rp1tqbLXAhszcft9K1LuLSHVQ=="],
 

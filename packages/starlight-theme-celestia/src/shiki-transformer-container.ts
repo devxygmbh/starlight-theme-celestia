@@ -5,7 +5,7 @@ import { isElement } from "hast-util-is-element";
 import { CODE_PROPERTY_CONTAINER, CODE_PROPERTY_TITLE } from "./constants";
 import { parseTitleString } from "./shiki-meta-title";
 
-const name = "starlight-celestia-theme-shiki-transformer-container";
+const name = "starlight-theme-celestia-shiki-transformer-container";
 
 /**
  * A transformer to wrap code blocks in a container.

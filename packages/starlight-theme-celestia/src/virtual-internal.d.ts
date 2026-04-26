@@ -5,7 +5,7 @@ declare module "virtual:starlight/pagefind-config" {
   export const pagefindUserConfig: Partial<Extract<StarlightConfig["pagefind"], object>>;
 }
 
-declare module "virtual:starlight-celestia-theme/user-config" {
+declare module "virtual:starlight-theme-celestia/user-config" {
   const config: import("./user-options").ConfigSerialized;
   export default config;
 }

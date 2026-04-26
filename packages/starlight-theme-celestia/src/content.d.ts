@@ -3,7 +3,7 @@
  * files `.astro/content.d.ts`.
  *
  * Normally, Astro will generate a `.astro/content.d.ts` file for an Astro app
- * project. However, since starlight-celestia-theme is a library instead of an app,
+ * project. However, since starlight-theme-celestia is a library instead of an app,
  * we don't have those auto-generated files.
  */
 

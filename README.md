@@ -1,4 +1,4 @@
-# starlight-celestia-theme
+# starlight-theme-celestia
 
 A clean, modern theme for [Astro Starlight](https://starlight.astro.build/), forked from [starlight-theme-nova](https://github.com/ocavue/starlight-theme-nova).
 
@@ -15,7 +15,7 @@ A clean, modern theme for [Astro Starlight](https://starlight.astro.build/), for
 ## Installation
 
 ```bash
-bun add git+ssh://git@codefloe.com/devxy/starlight-celestia-theme.git
+bun add git+ssh://git@codefloe.com/devxy/starlight-theme-celestia.git
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ bun add git+ssh://git@codefloe.com/devxy/starlight-celestia-theme.git
 ```js
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import starlightCelestiaTheme from "starlight-celestia-theme";
+import starlightCelestiaTheme from "starlight-theme-celestia";
 
 export default defineConfig({
   integrations: [
@@ -84,8 +84,8 @@ starlightVersions({
 
 ```bash
 bun install
-bun --filter starlight-celestia-theme build
-bun --filter starlight-celestia-theme-website dev
+bun --filter starlight-theme-celestia build
+bun --filter starlight-theme-celestia-website dev
 ```
 
 ## License

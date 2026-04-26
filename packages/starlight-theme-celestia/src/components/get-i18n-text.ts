@@ -22,7 +22,7 @@ export function getI18nText(value: string | Record<string, string>, route: Starl
   }
 
   const message =
-    `[starlight-celestia-theme] Unable to find the translation for language "${lang}".\n` +
+    `[starlight-theme-celestia] Unable to find the translation for language "${lang}".\n` +
     `Are you using the correct BCP-47 language tag ` +
     `(e.g. "en", "ar", or "zh-CN") in the following configuration?\n` +
     JSON.stringify(value, null, 2) +

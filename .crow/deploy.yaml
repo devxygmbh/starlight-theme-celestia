@@ -8,7 +8,7 @@ steps:
     image: cr.codefloe.com/docker.io/oven/bun:1.3
     commands:
       - bun install
-      - bun --filter starlight-celestia-theme build
+      - bun --filter starlight-theme-celestia build
       # Create npx wrapper for Pagefind compatibility
       - |
         cat > /usr/local/bin/npx << 'EOF'
@@ -23,7 +23,7 @@ steps:
         exec bun x $args
         EOF
       - chmod +x /usr/local/bin/npx
-      - bun --filter starlight-celestia-theme-website build
+      - bun --filter starlight-theme-celestia-website build
 
   - name: Deploy preparation
     image: cr.codefloe.com/docker.io/library/alpine:3.23

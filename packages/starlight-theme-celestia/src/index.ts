@@ -7,29 +7,29 @@ import type { ThemeCelestiaOptions } from "./user-options";
 import { vitePluginUserConfig } from "./virtual-user-config";
 
 const components = {
-  Header: "starlight-celestia-theme/components/Header.astro",
-  Search: "starlight-celestia-theme/components/Search.astro",
-  ThemeProvider: "starlight-celestia-theme/components/ThemeProvider.astro",
-  ThemeSelect: "starlight-celestia-theme/components/ThemeSelect.astro",
-  SocialIcons: "starlight-celestia-theme/components/SocialIcons.astro",
-  SiteTitle: "starlight-celestia-theme/components/SiteTitleVersioned.astro",
-  PageFrame: "starlight-celestia-theme/components/PageFrame.astro",
-  Pagination: "starlight-celestia-theme/components/Pagination.astro",
-  MobileMenuToggle: "starlight-celestia-theme/components/MobileMenuToggle.astro",
-  TwoColumnContent: "starlight-celestia-theme/components/TwoColumnContent.astro",
-  MarkdownContent: "starlight-celestia-theme/components/MarkdownContent.astro",
-  Hero: "starlight-celestia-theme/components/Hero.astro",
-  MobileTableOfContents: "starlight-celestia-theme/components/MobileTableOfContents.astro",
-  MobileMenuFooter: "starlight-celestia-theme/components/MobileMenuFooter.astro",
-  LanguageSelect: "starlight-celestia-theme/components/LanguageSelect.astro",
-  Head: "starlight-celestia-theme/components/Head.astro",
+  Header: "starlight-theme-celestia/components/Header.astro",
+  Search: "starlight-theme-celestia/components/Search.astro",
+  ThemeProvider: "starlight-theme-celestia/components/ThemeProvider.astro",
+  ThemeSelect: "starlight-theme-celestia/components/ThemeSelect.astro",
+  SocialIcons: "starlight-theme-celestia/components/SocialIcons.astro",
+  SiteTitle: "starlight-theme-celestia/components/SiteTitleVersioned.astro",
+  PageFrame: "starlight-theme-celestia/components/PageFrame.astro",
+  Pagination: "starlight-theme-celestia/components/Pagination.astro",
+  MobileMenuToggle: "starlight-theme-celestia/components/MobileMenuToggle.astro",
+  TwoColumnContent: "starlight-theme-celestia/components/TwoColumnContent.astro",
+  MarkdownContent: "starlight-theme-celestia/components/MarkdownContent.astro",
+  Hero: "starlight-theme-celestia/components/Hero.astro",
+  MobileTableOfContents: "starlight-theme-celestia/components/MobileTableOfContents.astro",
+  MobileMenuFooter: "starlight-theme-celestia/components/MobileMenuFooter.astro",
+  LanguageSelect: "starlight-theme-celestia/components/LanguageSelect.astro",
+  Head: "starlight-theme-celestia/components/Head.astro",
 } as const satisfies Partial<StarlightConfig["components"]>;
 
 export type { ThemeCelestiaOptions };
 
 export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {}): StarlightPlugin {
   return {
-    name: "starlight-celestia-theme",
+    name: "starlight-theme-celestia",
     hooks: {
       setup: async ({ config, updateConfig, addIntegration, astroConfig }) => {
         let useTailwind: boolean;
@@ -45,15 +45,15 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
 
         const newConfig = {
           customCss: [
-            "starlight-celestia-theme/layer.css",
+            "starlight-theme-celestia/layer.css",
 
-            useTailwind ? "" : "starlight-celestia-theme/tailwind.gen.css",
+            useTailwind ? "" : "starlight-theme-celestia/tailwind.gen.css",
 
-            "starlight-celestia-theme/theme.css",
+            "starlight-theme-celestia/theme.css",
 
             ...(config.customCss || []),
 
-            "starlight-celestia-theme/styles.css",
+            "starlight-theme-celestia/styles.css",
           ].filter(Boolean),
           components: {
             ...components,
@@ -65,7 +65,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
         updateConfig(newConfig);
 
         addIntegration({
-          name: "starlight-celestia-theme-integration",
+          name: "starlight-theme-celestia-integration",
           hooks: {
             "astro:config:setup": ({ updateConfig }) => {
               updateConfig({

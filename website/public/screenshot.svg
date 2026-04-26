@@ -5,7 +5,7 @@
   <circle cx="40" cy="18" r="6" fill="#a6e3a1"/>
   <circle cx="60" cy="18" r="6" fill="#f9e2af"/>
   <text x="400" y="22" text-anchor="middle" fill="#cdd6f4" font-family="monospace" font-size="13">Terminal — docs</text>
-  <text x="30" y="70" fill="#89b4fa" font-family="monospace" font-size="14">$ bun --filter starlight-celestia-theme-website dev</text>
+  <text x="30" y="70" fill="#89b4fa" font-family="monospace" font-size="14">$ bun --filter starlight-theme-celestia-website dev</text>
   <text x="30" y="95" fill="#a6adc8" font-family="monospace" font-size="14">astro v6.1.8 ready in 1021 ms</text>
   <text x="30" y="120" fill="#a6adc8" font-family="monospace" font-size="14">┃ Local    http://localhost:4321/</text>
   <text x="30" y="145" fill="#a6adc8" font-family="monospace" font-size="14">┃ Network  use --host to expose</text>

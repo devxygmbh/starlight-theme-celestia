@@ -3,5 +3,6 @@ dist
 .astro
 .turbo
 bun.lock
-packages/starlight-celestia-theme/lib/tailwind.gen.css
+packages/starlight-theme-celestia/lib/tailwind.gen.css
 renovate.json
+#

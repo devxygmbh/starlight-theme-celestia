@@ -1,5 +1,5 @@
 {
-  "name": "starlight-celestia-theme-monorepo",
+  "name": "starlight-theme-celestia-monorepo",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -11,8 +11,8 @@
   "scripts": {
     "dev": "bun --filter '*' dev",
     "build": "turbo run build",
-    "preview": "bun run build && bun --filter starlight-celestia-theme-website preview",
-    "build:tailwindcss": "bun --filter starlight-celestia-theme build",
+    "preview": "bun run build && bun --filter starlight-theme-celestia-website preview",
+    "build:tailwindcss": "bun --filter starlight-theme-celestia build",
     "typecheck": "tsc -b"
   },
   "devDependencies": {

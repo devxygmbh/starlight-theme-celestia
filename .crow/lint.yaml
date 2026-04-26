@@ -22,7 +22,7 @@ steps:
       - install-dependencies
     image: *bun_image
     commands:
-      - bun --filter starlight-celestia-theme build
+      - bun --filter starlight-theme-celestia build
       # Create npx wrapper for Pagefind compatibility
       - |
         cat > /usr/local/bin/npx << 'EOF'
@@ -36,7 +36,7 @@ steps:
         exec bun x $args
         EOF
       - chmod +x /usr/local/bin/npx
-      - bun --filter starlight-celestia-theme-website build
+      - bun --filter starlight-theme-celestia-website build
 
   commitlint:
     when:

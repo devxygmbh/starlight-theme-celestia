@@ -15,10 +15,10 @@ export interface ThemeCelestiaOptions {
   nav?: NavItem[];
 
   /**
-   * `starlight-celestia-theme` supports two styling systems: pure CSS and Tailwind
+   * `starlight-theme-celestia` supports two styling systems: pure CSS and Tailwind
    * CSS.
    *
-   * By default, `starlight-celestia-theme` will detect if Tailwind CSS is passed to
+   * By default, `starlight-theme-celestia` will detect if Tailwind CSS is passed to
    * the Astro config, and use Tailwind CSS if it is. You can also force the
    * theme to use a specific styling system by setting the `stylingSystem`
    * option to `css` or `tailwind`.
