@@ -37,7 +37,7 @@ jobs:
             exit 1
           fi
           VERSION="${REF_NAME#v}"
-          npm version --no-git-tag-version "$VERSION"
+          npm pkg set version="$VERSION"
 
       - name: Build
         run: bun --filter starlight-theme-celestia build
