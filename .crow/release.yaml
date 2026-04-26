@@ -25,20 +25,20 @@ steps:
       - sed -i "s/\"version\":\ \"[^\"]*\"/\"version\":\ \"$VERSION\"/" packages/starlight-theme-celestia/package.json
       - echo "Updated package.json to version $VERSION"
 
-  publish:
-    depends_on:
-      - "Bump version"
-    image: cr.codefloe.com/docker.io/oven/bun:1.3-alpine
-    environment:
-      FORGEJO_TOKEN:
-        from_secret: codefloe_packages_token_devxy_bot
-    commands:
-      - bun install --frozen-lockfile
-      - bun --filter starlight-theme-celestia build
-      - apk add -q --no-cache npm
-      - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > ~/.npmrc
-      - echo "registry=https://codefloe.com/api/packages/devxy/npm/" >> ~/.npmrc
-      - cd packages/starlight-theme-celestia && npm publish
+  # publish:
+  # depends_on:
+  # - "Bump version"
+  # image: cr.codefloe.com/docker.io/oven/bun:1.3-alpine
+  # environment:
+  # FORGEJO_TOKEN:
+  # from_secret: codefloe_packages_token_devxy_bot
+  # commands:
+  # - bun install --frozen-lockfile
+  # - bun --filter starlight-theme-celestia build
+  # - apk add -q --no-cache npm
+  # - echo "//codefloe.com/api/packages/devxy/npm/:_authToken=$FORGEJO_TOKEN" > ~/.npmrc
+  # - echo "registry=https://codefloe.com/api/packages/devxy/npm/" >> ~/.npmrc
+  # - cd packages/starlight-theme-celestia && npm publish
 
   "Create release":
     depends_on:
