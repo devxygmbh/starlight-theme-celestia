@@ -4,6 +4,10 @@
   "version": "0.2.0",
   "description": "A clean, modern theme for Astro Starlight",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devxygmbh/starlight-theme-celestia.git"
+  },
   "sideEffects": false,
   "main": "./src/index.ts",
   "exports": {
