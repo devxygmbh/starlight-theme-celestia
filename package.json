@@ -16,7 +16,7 @@
     "typecheck": "tsc -b"
   },
   "devDependencies": {
-    "@types/node": "^20.17.30",
+    "@types/node": "^25.0.0",
     "turbo": "^2.9.6",
     "typescript": "^6.0.0"
   },
