@@ -3,7 +3,7 @@ version: "1.1"
 versioning:
   update-major: [breaking]
   update-minor: [feat, perf]
-  update-patch: [build, ci, chore, fix, perf, refactor, test]
+  update-patch: [build, ci, chore, fix, perf, refactor, test, docs]
   ignore-unknown: false
 
 tag:
