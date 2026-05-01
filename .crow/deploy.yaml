@@ -7,11 +7,10 @@ steps:
   - name: Build
     image: cr.codefloe.com/docker.io/oven/bun:1.3
     environment:
-      # Cap memory so the build fits in the 3.5 GB CI runner.
-      # Node heap is capped below total to leave headroom for native deps
-      # (Sharp/libvips and the @astrojs/compiler WASM runtime) which live
-      # outside the JS heap.
-      NODE_OPTIONS: "--max-old-space-size=2048"
+      # Cap native-side parallelism so the build fits on the 3.5 GB CI runner.
+      # Sharp/libvips and the @astrojs/compiler WASM runtime live outside JSC's
+      # heap; without these caps each spawns one worker per CPU.
+      # JSC heap pressure is handled by `bun --smol` on the website build below.
       UV_THREADPOOL_SIZE: "2"
       VIPS_CONCURRENCY: "1"
       SHARP_CONCURRENCY: "1"
@@ -32,7 +31,7 @@ steps:
         exec bun x $args
         EOF
       - chmod +x /usr/local/bin/npx
-      - bun --filter starlight-theme-celestia-website build
+      - bun --smol --filter starlight-theme-celestia-website build
 
   - name: Deploy preparation
     image: cr.codefloe.com/docker.io/library/alpine:3.23
