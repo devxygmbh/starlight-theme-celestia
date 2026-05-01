@@ -1,7 +1,7 @@
 {
   "name": "starlight-theme-celestia",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "A clean, modern theme for Astro Starlight",
   "license": "MIT",
   "repository": {
