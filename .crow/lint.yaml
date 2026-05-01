@@ -42,6 +42,6 @@ steps:
     when:
       - event: pull_request
       - event: pull_request_edited
-    image: cr.codefloe.com/docker.io/commitlint/commitlint:20.5.2
+    image: cr.codefloe.com/docker.io/commitlint/commitlint:20.5.3
     commands:
       - echo $${CI_COMMIT_PULL_REQUEST_TITLE} | commitlint
