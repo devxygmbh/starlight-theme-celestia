@@ -184,3 +184,4 @@ dist
 
 # Playwright MCP
 .playwright-mcp
+CHANGELOG.md

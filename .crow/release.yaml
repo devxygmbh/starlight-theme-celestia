@@ -52,7 +52,7 @@ steps:
 
   "Push changes to repo":
     depends_on:
-      - publish
+      - "Bump version"
     image: cr.codefloe.com/docker.io/appleboy/drone-git-push:1.2.3
     settings:
       remote: ${CI_REPO_CLONE_SSH_URL}
