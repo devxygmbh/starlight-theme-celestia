@@ -21,6 +21,15 @@ steps:
     depends_on:
       - install-dependencies
     image: *bun_image
+    environment:
+      # Cap memory so the build fits in the 3.5 GB CI runner.
+      # Node heap is capped below total to leave headroom for native deps
+      # (Sharp/libvips and the @astrojs/compiler WASM runtime) which live
+      # outside the JS heap.
+      NODE_OPTIONS: "--max-old-space-size=2048"
+      UV_THREADPOOL_SIZE: "2"
+      VIPS_CONCURRENCY: "1"
+      SHARP_CONCURRENCY: "1"
     commands:
       - bun --filter starlight-theme-celestia build
       # Create npx wrapper for Pagefind compatibility
