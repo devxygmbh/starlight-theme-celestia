@@ -15,7 +15,14 @@ steps:
   prettier:
     depends_on:
       - install-dependencies
-    image: cr.codefloe.com/docker.io/woodpeckerci/plugin-prettier:1.4.1
+    # Run prettier directly under Node so we can cap the V8 heap. The
+    # woodpecker prettier plugin was aborting with std::bad_alloc on this
+    # runner.
+    image: cr.codefloe.com/docker.io/library/node:22-alpine
+    environment:
+      NODE_OPTIONS: "--max-old-space-size=2048"
+    commands:
+      - npx prettier --check .
 
   build-theme:
     depends_on:
