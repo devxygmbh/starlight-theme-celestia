@@ -4,34 +4,32 @@ when:
   - event: manual
 
 steps:
-  - name: Build
+  - name: Install and build theme
     image: cr.codefloe.com/docker.io/oven/bun:1.3
     environment:
       # Cap native-side parallelism so the build fits on the 3.5 GB CI runner.
       # Sharp/libvips and the @astrojs/compiler WASM runtime live outside JSC's
       # heap; without these caps each spawns one worker per CPU.
-      # JSC heap pressure is handled by `bun --smol` on the website build below.
       UV_THREADPOOL_SIZE: "2"
       VIPS_CONCURRENCY: "1"
       SHARP_CONCURRENCY: "1"
     commands:
       - bun install
       - bun --smol --filter starlight-theme-celestia build
-      # Create npx wrapper for Pagefind compatibility
-      - |
-        cat > /usr/local/bin/npx << 'EOF'
-        #!/bin/sh
-        # Strip -y flag and forward to bun x
-        args=""
-        for arg in "$@"; do
-          if [ "$arg" != "-y" ]; then
-            args="$args $arg"
-          fi
-        done
-        exec bun x $args
-        EOF
-      - chmod +x /usr/local/bin/npx
-      - bun --smol --filter starlight-theme-celestia-website build
+
+  - name: Build website
+    # Run the Astro build under Node so we can hard-cap V8's heap with
+    # --max-old-space-size. `bun --smol` only hints at JSC's target heap and
+    # was still OOM'ing during Vite's static-entrypoint init on the 3.5 GB
+    # runner. Reuses node_modules installed by bun in the previous step.
+    image: cr.codefloe.com/docker.io/library/node:22-slim
+    environment:
+      UV_THREADPOOL_SIZE: "2"
+      VIPS_CONCURRENCY: "1"
+      SHARP_CONCURRENCY: "1"
+      NODE_OPTIONS: "--max-old-space-size=3072"
+    commands:
+      - cd website && npx astro build
 
   - name: Deploy preparation
     image: cr.codefloe.com/docker.io/library/alpine:3.23
