@@ -43,7 +43,7 @@ steps:
   "Create release":
     depends_on:
       - changelog
-    image: cr.codefloe.com/docker.io/woodpeckerci/plugin-release:0.3.0
+    image: cr.codefloe.com/docker.io/woodpeckerci/plugin-release:0.3.1
     settings:
       note: CHANGELOG.md
       api_key:
