@@ -16,7 +16,7 @@ steps:
       SHARP_CONCURRENCY: "1"
     commands:
       - bun install
-      - bun --filter starlight-theme-celestia build
+      - bun --smol --filter starlight-theme-celestia build
       # Create npx wrapper for Pagefind compatibility
       - |
         cat > /usr/local/bin/npx << 'EOF'
