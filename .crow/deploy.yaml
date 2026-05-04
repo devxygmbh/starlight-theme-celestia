@@ -22,7 +22,7 @@ steps:
     # --max-old-space-size. `bun --smol` only hints at JSC's target heap and
     # was still OOM'ing during Vite's static-entrypoint init on the 3.5 GB
     # runner. Reuses node_modules installed by bun in the previous step.
-    image: cr.codefloe.com/docker.io/library/node:22-slim
+    image: cr.codefloe.com/docker.io/library/node:24-slim
     environment:
       UV_THREADPOOL_SIZE: "2"
       VIPS_CONCURRENCY: "1"
