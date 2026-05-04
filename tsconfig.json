@@ -1,3 +1,0 @@
-{
-  "references": [{ "path": "./website/tsconfig.json" }, { "path": "./packages/starlight-theme-celestia/tsconfig.json" }]
-}
