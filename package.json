@@ -13,7 +13,8 @@
     "build": "turbo run build",
     "preview": "bun run build && bun --filter starlight-theme-celestia-website preview",
     "build:tailwindcss": "bun --filter starlight-theme-celestia build",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "test": "bun --filter starlight-theme-celestia test"
   },
   "devDependencies": {
     "@types/node": "^25.0.0",

@@ -31,7 +31,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
   return {
     name: "starlight-theme-celestia",
     hooks: {
-      setup: async ({ config, updateConfig, addIntegration, astroConfig }) => {
+      "config:setup": async ({ config, updateConfig, addIntegration, astroConfig }) => {
         let useTailwind: boolean;
 
         if (options.stylingSystem === "css") {

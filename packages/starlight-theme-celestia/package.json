@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "build": "bun run build:tailwindcss",
-    "build:tailwindcss": "tailwindcss -i ./lib/tailwind.build.css -o ./lib/tailwind.gen.css"
+    "build:tailwindcss": "tailwindcss -i ./lib/tailwind.build.css -o ./lib/tailwind.gen.css",
+    "test": "bun test"
   },
   "dependencies": {
     "@aria-ui/core": "^0.2.0",

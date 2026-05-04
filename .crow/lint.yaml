@@ -24,6 +24,15 @@ steps:
     commands:
       - npx prettier --check .
 
+  test:
+    depends_on:
+      - install-dependencies
+    # Sub-second plugin-shape regression guard for the package's factory.
+    # Runs alongside prettier/build-theme since it has no build outputs.
+    image: *bun_image
+    commands:
+      - bun --filter starlight-theme-celestia test
+
   build-theme:
     depends_on:
       - install-dependencies
