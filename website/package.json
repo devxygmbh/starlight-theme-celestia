@@ -14,7 +14,7 @@
     "@lorenzo_lewis/starlight-utils": "^0.3.0",
     "sharp": "^0.34.2",
     "starlight-theme-celestia": "workspace:*",
-    "starlight-versions": "^0.8.0"
+    "starlight-versions": "^0.9.0"
   },
   "devDependencies": {}
 }
