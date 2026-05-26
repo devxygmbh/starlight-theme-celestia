@@ -18,6 +18,31 @@ export function transformerContainer(): ShikiTransformer {
         throw new Error(`[${name}] Expected at least one child`);
       }
 
+      // Mermaid blocks must reach downstream rehype plugins (e.g. rehype-mermaid)
+      // unwrapped. Shiki rewrites the original `<pre><code class="language-mermaid">`
+      // into highlighted tokens with `data-language="mermaid"`, which strips the
+      // class rehype-mermaid keys off. Restore the pre-shiki structure so any
+      // mermaid strategy (pre-mermaid, inline-svg, img-svg, img-png) can pick it
+      // up. If no mermaid plugin is configured the block falls back to plain code.
+      if (this.options.lang === "mermaid") {
+        node.children = [
+          {
+            type: "element",
+            tagName: "pre",
+            properties: {},
+            children: [
+              {
+                type: "element",
+                tagName: "code",
+                properties: { className: ["language-mermaid"] },
+                children: [{ type: "text", value: this.source }],
+              },
+            ],
+          },
+        ];
+        return node;
+      }
+
       const pre = node.children.find((child) => isElement(child, "pre"));
 
       if (!pre) {
