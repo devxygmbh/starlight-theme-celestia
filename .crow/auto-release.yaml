@@ -1,0 +1,34 @@
+when:
+  - event: cron
+    cron: auto-release
+  - event: manual
+
+clone:
+  git:
+    image: codeberg.org/crow-plugins/clone:1.0.3
+    settings:
+      tags: true
+
+steps:
+  auto-release:
+    image: codefloe.com/crow-plugins/auto-releaser:0.1.0
+    settings:
+      tag_after: 30d
+      ssh_key:
+        from_secret: devxy_bot_ssh_key
+      smtp_host:
+        from_secret:
+          integration: 34
+          path: postale/host
+          key: key
+      smtp_port: 587
+      smtp_username: infrastructure@devxy.io
+      smtp_password:
+        from_secret:
+          integration: 34
+          path: postale/infrastructure@devxy.io
+          key: password
+      smtp_from: infrastructure@devxy.io
+      smtp_to:
+        from_secret: auto-releaser-smtp-to
+      notify_on: tag_created,error
