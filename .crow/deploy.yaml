@@ -32,7 +32,7 @@ steps:
       - cd website && npx astro build
 
   - name: Deploy preparation
-    image: cr.codefloe.com/docker.io/library/alpine:3.23
+    image: cr.codefloe.com/docker.io/library/alpine:3.24
     commands:
       - mv website/dist/ /tmp/public
       - mv .git /tmp/.git
