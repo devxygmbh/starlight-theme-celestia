@@ -12,7 +12,7 @@
     "@astrojs/starlight": "^0.40.0",
     "astro": "^6.1.6",
     "@lorenzo_lewis/starlight-utils": "^0.3.0",
-    "sharp": "^0.34.2",
+    "sharp": "^0.35.0",
     "starlight-theme-celestia": "workspace:*",
     "starlight-versions": "^0.9.0"
   },
