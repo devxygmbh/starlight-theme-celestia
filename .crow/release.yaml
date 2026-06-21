@@ -9,7 +9,7 @@ clone:
 
 steps:
   changelog:
-    image: cr.codefloe.com/docker.io/thegeeklab/git-sv:2.1.2
+    image: cr.codefloe.com/docker.io/thegeeklab/git-sv:2.1.3
     commands:
       - apk add --no-cache -q sed
       - git sv current-version
