@@ -18,6 +18,17 @@ A clean, modern theme for [Astro Starlight](https://starlight.astro.build/), for
 bun add git+ssh://git@codefloe.com/devxy/starlight-theme-celestia.git
 ```
 
+### Twoslash code blocks
+
+Twoslash annotations in code blocks require `typescript` (`^5.5.0 || ^6.0.0`) in your project.
+The native `typescript@7` package does not expose the compiler API Twoslash needs, so pin a supported version if your package manager resolves `typescript` for you:
+
+```bash
+bun add -d typescript@^6
+```
+
+Without a compatible installation the theme logs a warning and renders code blocks without Twoslash instead of failing the build.
+
 ## Usage
 
 ```js

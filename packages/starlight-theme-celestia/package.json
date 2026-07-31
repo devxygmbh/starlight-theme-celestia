@@ -42,10 +42,14 @@
     "starlight-versions": "^0.9.0"
   },
   "peerDependencies": {
-    "@astrojs/starlight": "*"
+    "@astrojs/starlight": "*",
+    "typescript": "^5.5.0 || ^6.0.0"
   },
   "peerDependenciesMeta": {
     "@astrojs/starlight": {
+      "optional": true
+    },
+    "typescript": {
       "optional": true
     }
   },
