@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/node": "^26.0.0",
     "turbo": "^2.9.6",
-    "typescript": "^6.0.0"
+    "typescript": "^7.0.0"
   },
   "trustedDependencies": [
     "sharp",
