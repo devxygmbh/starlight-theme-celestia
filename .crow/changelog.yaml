@@ -8,6 +8,9 @@ when:
   event: [push, manual]
   branch: ${CI_REPO_DEFAULT_BRANCH}
 
+labels:
+  backend: docker
+
 steps:
   - name: "Upcoming Changelog"
     environment:

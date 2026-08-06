@@ -9,6 +9,9 @@ clone:
     settings:
       tags: true
 
+labels:
+  backend: docker
+
 steps:
   auto-release:
     image: codefloe.com/crow-plugins/auto-releaser:0.3.0

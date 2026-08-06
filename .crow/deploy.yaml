@@ -3,6 +3,9 @@ when:
     branch: ${CI_REPO_DEFAULT_BRANCH}
   - event: manual
 
+labels:
+  backend: docker
+
 steps:
   - name: Install and build theme
     image: cr.codefloe.com/docker.io/oven/bun:1.3

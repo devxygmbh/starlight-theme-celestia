@@ -7,6 +7,9 @@ clone:
     settings:
       tags: true
 
+labels:
+  backend: docker
+
 steps:
   changelog:
     image: cr.codefloe.com/docker.io/thegeeklab/git-sv:3.0.0

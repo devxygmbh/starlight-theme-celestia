@@ -6,6 +6,9 @@ when:
 variables:
   - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.3-alpine"
 
+labels:
+  backend: docker
+
 steps:
   install-dependencies:
     image: *bun_image
