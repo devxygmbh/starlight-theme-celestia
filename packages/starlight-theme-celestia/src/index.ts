@@ -3,7 +3,7 @@ import type { AstroConfig } from "astro";
 import remarkCustomHeaderId from "remark-custom-header-id";
 
 import { createShikiConfig } from "./shiki-config";
-import type { ThemeCelestiaOptions } from "./user-options";
+import type { MultiSidebarOptions, ThemeCelestiaOptions } from "./user-options";
 import { vitePluginUserConfig } from "./virtual-user-config";
 
 const components = {
@@ -25,7 +25,9 @@ const components = {
   Head: "starlight-theme-celestia/components/Head.astro",
 } as const satisfies Partial<StarlightConfig["components"]>;
 
-export type { ThemeCelestiaOptions };
+const sidebarComponent = "starlight-theme-celestia/components/Sidebar.astro";
+
+export type { MultiSidebarOptions, ThemeCelestiaOptions };
 
 export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {}): StarlightPlugin {
   return {
@@ -57,6 +59,9 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
           ].filter(Boolean),
           components: {
             ...components,
+            // Only override the sidebar when multi-sidebar is enabled, so Starlight's default keeps
+            // rendering for every other site.
+            ...(options.multiSidebar ? { Sidebar: sidebarComponent } : {}),
             ...config.components,
           },
           expressiveCode: config.expressiveCode ?? false,
@@ -77,6 +82,7 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
                   plugins: [
                     vitePluginUserConfig({
                       nav: options.nav,
+                      multiSidebar: options.multiSidebar,
                       rootHref: astroConfig.root.toString(),
                     }),
                   ],

@@ -29,7 +29,6 @@
     "@aria-ui/core": "^0.2.0",
     "@aria-ui/utils": "^0.1.5",
     "@fontsource/inter": "^5.0.0",
-    "@lorenzo_lewis/starlight-utils": "^0.3.0",
     "@pagefind/default-ui": "^1.5.2",
     "@shikijs/transformers": "^4.0.2",
     "@shikijs/twoslash": "^4.0.2",

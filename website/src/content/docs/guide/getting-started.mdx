@@ -68,21 +68,17 @@ starlightCelestiaTheme({
 
 ## Multi-Sidebar
 
-The theme ships `@lorenzo_lewis/starlight-utils` as a dependency for easy multi-sidebar support.
-Add it alongside the theme plugin:
+Turn every top-level group of your `sidebar` config into an independent switchable sidebar:
 
 ```js
-import starlightUtils from "@lorenzo_lewis/starlight-utils";
-
-// Inside starlight({ plugins: [...] })
-starlightUtils({
+starlightCelestiaTheme({
   multiSidebar: {
     switcherStyle: "horizontalList", // or 'dropdown' or 'hidden'
   },
 });
 ```
 
-Each top-level group in your `sidebar` config becomes an independent switchable sidebar.
+See the [multi-sidebar guide](/guide/multi-sidebar/) for the switcher styles and the sidebar requirements.
 
 ## Features
 
@@ -92,4 +88,4 @@ Each top-level group in your `sidebar` config becomes an independent switchable 
 - **Narrower sidebars** — `17rem` sidebars for better content focus
 - **3-way theme toggle** — Cycles through Auto, Light, and Dark
 - **Warm accent colors** — `#fb923c` (dark) / `#c2410c` (light)
-- **Multi-sidebar ready** — Ships `@lorenzo_lewis/starlight-utils` for multi-column sidebar support
+- **Multi-sidebar** — Built-in switchable sidebars, one per top-level `sidebar` group

@@ -2,7 +2,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightCelestiaTheme from "starlight-theme-celestia";
-import starlightUtils from "@lorenzo_lewis/starlight-utils";
 import starlightVersions from "starlight-versions";
 
 export default defineConfig({
@@ -23,15 +22,14 @@ export default defineConfig({
         src: "./public/logo.svg",
       },
       plugins: [
-        starlightCelestiaTheme(),
-        starlightVersions({
-          current: { label: "v0.1 (latest)" },
-          versions: [{ slug: "v0.0", label: "v0.0" }],
-        }),
-        starlightUtils({
+        starlightCelestiaTheme({
           multiSidebar: {
             switcherStyle: "horizontalList",
           },
+        }),
+        starlightVersions({
+          current: { label: "v0.1 (latest)" },
+          versions: [{ slug: "v0.0", label: "v0.0" }],
         }),
       ],
       sidebar: [

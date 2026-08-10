@@ -3,21 +3,18 @@ title: Multi-Sidebar
 description: How to use multiple independent sidebars.
 ---
 
-The theme ships `@lorenzo_lewis/starlight-utils` as a dependency, making it easy to set up independent sidebars for different content sections.
+The theme can turn every top-level entry of the Starlight `sidebar` config into its own sidebar, with a switcher to move between them.
 
 ## Setup
 
-Add `starlightUtils` to your Starlight plugins alongside the theme:
+Set the `multiSidebar` option on the theme plugin:
 
 ```js
-import starlightUtils from "@lorenzo_lewis/starlight-utils";
-
 export default defineConfig({
   integrations: [
     starlight({
       plugins: [
-        starlightCelestiaTheme(),
-        starlightUtils({
+        starlightCelestiaTheme({
           multiSidebar: {
             switcherStyle: "horizontalList",
           },
@@ -38,18 +35,30 @@ export default defineConfig({
 });
 ```
 
+Earlier releases documented `@lorenzo_lewis/starlight-utils` for this. That package is deprecated on npm and is no longer a dependency of the theme, so drop it from your plugin array and your `package.json` when you move the option across.
+
+The theme groups the sidebar while the `Sidebar` component renders instead of in a route middleware, so it works alongside [`starlight-versions`](/guide/versioning/) whatever order the two plugins are registered in.
+
 ## Switcher Styles
 
 ### Horizontal List
 
 The default style. Renders tabs above the sidebar content.
 
+```js
+starlightCelestiaTheme({
+  multiSidebar: {
+    switcherStyle: "horizontalList",
+  },
+});
+```
+
 ### Dropdown
 
 A compact dropdown menu for switching between sidebars.
 
 ```js
-starlightUtils({
+starlightCelestiaTheme({
   multiSidebar: {
     switcherStyle: "dropdown",
   },
@@ -58,10 +67,10 @@ starlightUtils({
 
 ### Hidden
 
-Hides the switcher entirely. Useful when combined with top navigation links.
+Hides the switcher entirely, so only the sidebar holding the current page is rendered. Useful when combined with top navigation links.
 
 ```js
-starlightUtils({
+starlightCelestiaTheme({
   multiSidebar: {
     switcherStyle: "hidden",
   },
@@ -72,7 +81,9 @@ starlightUtils({
 
 ### Groups
 
-Each top-level entry in the `sidebar` array must be a group with a `label`. Bare links at the top level are not supported.
+Each top-level entry in the `sidebar` array must be a group with a `label`. Bare links at the top level are not supported, and the build fails with an error naming the offending entry.
+
+Pages outside every group, such as a splash page at the site root, fall back to the first sidebar.
 
 ### Auto-generate
 
@@ -87,7 +98,7 @@ Use `autogenerate` to populate a sidebar group from a directory:
 
 ### Badges
 
-Groups support Starlight's badge system:
+Groups support Starlight's badge system, and the badge is rendered next to the label in the switcher:
 
 ```js
 {
