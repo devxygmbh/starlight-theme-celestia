@@ -4,7 +4,7 @@ when:
     branch: ${CI_REPO_DEFAULT_BRANCH}
 
 variables:
-  - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.3-alpine"
+  - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.4-alpine"
 
 labels:
   backend: docker
