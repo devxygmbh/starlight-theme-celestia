@@ -6,6 +6,8 @@
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["astro/client", "bun"]
   }
 }
