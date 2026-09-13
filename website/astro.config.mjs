@@ -5,16 +5,6 @@ import starlightCelestiaTheme from "starlight-theme-celestia";
 import starlightVersions from "starlight-versions";
 
 export default defineConfig({
-  // Cap Rollup's parallel file ops so the build fits on the 3.5 GB CI runner.
-  // Each Vite worker spawns its own @astrojs/compiler (Go→WASM) instance,
-  // so unbounded fanout exhausts JSC's heap during "Building static entrypoints".
-  vite: {
-    build: {
-      rollupOptions: {
-        maxParallelFileOps: 2,
-      },
-    },
-  },
   integrations: [
     starlight({
       title: "Celestia Theme",

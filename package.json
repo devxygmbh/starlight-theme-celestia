@@ -13,10 +13,11 @@
     "build": "turbo run build",
     "preview": "bun run build && bun --filter starlight-theme-celestia-website preview",
     "build:tailwindcss": "bun --filter starlight-theme-celestia build",
-    "typecheck": "tsc -b",
+    "typecheck": "bun --filter starlight-theme-celestia-website typecheck && tsc -p packages/starlight-theme-celestia --noEmit",
     "test": "bun --filter starlight-theme-celestia test"
   },
   "devDependencies": {
+    "@types/bun": "^1.4.2",
     "@types/node": "^26.0.0",
     "turbo": "^2.9.6",
     "typescript": "^6.0.0"
@@ -25,5 +26,9 @@
     "sharp",
     "esbuild",
     "@parcel/watcher"
-  ]
+  ],
+  "packageManager": "bun@1.4.0",
+  "patchedDependencies": {
+    "starlight-versions@0.10.1": "patches/starlight-versions@0.10.1.patch"
+  }
 }

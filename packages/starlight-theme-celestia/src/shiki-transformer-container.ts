@@ -104,7 +104,7 @@ export function transformerContainer(): ShikiTransformer {
   };
 }
 
-// A simple function to make typescript happy
+// Root-only nodes, including MDX module declarations, cannot be nested inside an element.
 function normalizeContent(children: RootContent[]): ElementContent[] {
-  return children.filter((child) => child.type !== "doctype");
+  return children.filter((child): child is ElementContent => !["doctype", "mdxjsEsm"].includes(child.type));
 }

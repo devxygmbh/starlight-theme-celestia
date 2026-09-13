@@ -1,3 +1,4 @@
+import { isUnifiedProcessor, unified } from "@astrojs/markdown-remark";
 import type { StarlightConfig, StarlightPlugin, StarlightUserConfig } from "@astrojs/starlight/types";
 import type { AstroConfig } from "astro";
 import remarkCustomHeaderId from "remark-custom-header-id";
@@ -72,11 +73,17 @@ export default function starlightCelestiaTheme(options: ThemeCelestiaOptions = {
         addIntegration({
           name: "starlight-theme-celestia-integration",
           hooks: {
-            "astro:config:setup": ({ updateConfig }) => {
+            "astro:config:setup": ({ config, updateConfig }) => {
+              // Reuse unified so user options and Astro's legacy-plugin migration tracking survive.
+              // Astro migrates any top-level remark/rehype settings when updateConfig validates this processor.
+              const currentProcessor = config.markdown.processor;
+              const processor = currentProcessor && isUnifiedProcessor(currentProcessor) ? currentProcessor : unified();
+              processor.options.remarkPlugins.push(remarkCustomHeaderId);
+
               updateConfig({
                 markdown: {
                   shikiConfig: createShikiConfig({ twoslash: true }),
-                  remarkPlugins: [remarkCustomHeaderId],
+                  processor,
                 },
                 vite: {
                   plugins: [
