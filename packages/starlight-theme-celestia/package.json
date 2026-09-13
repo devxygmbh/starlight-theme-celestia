@@ -28,6 +28,7 @@
   "dependencies": {
     "@aria-ui/core": "^0.2.0",
     "@aria-ui/utils": "^0.1.5",
+    "@astrojs/markdown-remark": "^7.3.0",
     "@fontsource/inter": "^5.0.0",
     "@pagefind/default-ui": "^1.5.2",
     "@shikijs/transformers": "^4.0.2",
