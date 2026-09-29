@@ -27,7 +27,7 @@
     "esbuild",
     "@parcel/watcher"
   ],
-  "packageManager": "bun@1.4.0",
+  "packageManager": "bun@1.4.2",
   "patchedDependencies": {
     "starlight-versions@0.10.1": "patches/starlight-versions@0.10.1.patch"
   }
