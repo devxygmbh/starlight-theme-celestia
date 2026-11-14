@@ -1,8 +1,0 @@
-node_modules
-dist
-.astro
-.turbo
-bun.lock
-packages/starlight-theme-celestia/lib/tailwind.gen.css
-renovate.json
-#
