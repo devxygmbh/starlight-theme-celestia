@@ -4,7 +4,7 @@ when:
     branch: ${CI_REPO_DEFAULT_BRANCH}
 
 variables:
-  - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.4-alpine"
+  - &bun_image "cr.codefloe.com/docker.io/oven/bun:1.4"
 
 labels:
   backend: docker
@@ -21,7 +21,7 @@ steps:
     # Run prettier directly under Node so we can cap the V8 heap. The
     # woodpecker prettier plugin was aborting with std::bad_alloc on this
     # runner.
-    image: cr.codefloe.com/docker.io/library/node:26-alpine
+    image: cr.codefloe.com/docker.io/library/node:26-slim
     environment:
       NODE_OPTIONS: "--max-old-space-size=2048"
     commands:
@@ -56,9 +56,9 @@ steps:
     # Run the Astro build under Node — Bun has been crashing on this runner
     # with both OOMs (`--smol` only hints at JSC's target heap) and SIGILL
     # during Vite's static-entrypoint init. Node honors --max-old-space-size
-    # as a hard cap. Alpine variant matches the musl sharp binaries that
-    # bun installed in the previous step.
-    image: cr.codefloe.com/docker.io/library/node:26-alpine
+    # as a hard cap. Slim (glibc) matches the native binaries that the
+    # Debian-based bun image installed in the previous step.
+    image: cr.codefloe.com/docker.io/library/node:26-slim
     environment:
       UV_THREADPOOL_SIZE: "2"
       VIPS_CONCURRENCY: "1"
