@@ -17,7 +17,7 @@
       "dependencies": {
         "@aria-ui/core": "^0.2.0",
         "@aria-ui/utils": "^0.1.5",
-        "@astrojs/markdown-remark": "^7.3.0",
+        "@astrojs/markdown-remark": "^7.3.9",
         "@fontsource/inter": "^5.0.0",
         "@pagefind/default-ui": "^1.5.2",
         "@shikijs/transformers": "^4.0.2",
@@ -35,7 +35,7 @@
         "@tailwindcss/cli": "^4.2.2",
         "@tailwindcss/vite": "^4.2.2",
         "@types/node": "^26.0.0",
-        "astro": "^7.0.2",
+        "astro": "^7.4.12",
         "tailwindcss": "^4.2.2",
         "typescript": "^6.0.3",
       },
@@ -53,7 +53,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@astrojs/starlight": "^0.43.0",
-        "astro": "^7.0.2",
+        "astro": "^7.4.12",
         "sharp": "^0.35.0",
         "starlight-theme-celestia": "workspace:*",
         "starlight-versions": "^0.10.0",
