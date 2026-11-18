@@ -31,7 +31,7 @@
         "starlight-versions": "^0.10.0",
       },
       "devDependencies": {
-        "@astrojs/starlight": "^0.43.0",
+        "@astrojs/starlight": "^0.43.1",
         "@tailwindcss/cli": "^4.2.2",
         "@tailwindcss/vite": "^4.2.2",
         "@types/node": "^26.0.0",
@@ -52,7 +52,7 @@
       "name": "starlight-theme-celestia-website",
       "version": "0.0.0",
       "dependencies": {
-        "@astrojs/starlight": "^0.43.0",
+        "@astrojs/starlight": "^0.43.1",
         "astro": "^7.4.12",
         "sharp": "^0.35.0",
         "starlight-theme-celestia": "workspace:*",
