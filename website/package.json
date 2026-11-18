@@ -14,7 +14,7 @@
     "astro": "^7.4.12",
     "sharp": "^0.35.5",
     "starlight-theme-celestia": "workspace:*",
-    "starlight-versions": "^0.10.0"
+    "starlight-versions": "^0.10.2"
   },
   "devDependencies": {}
 }

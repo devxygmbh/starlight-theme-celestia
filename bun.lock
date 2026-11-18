@@ -28,7 +28,7 @@
         "rehype": "^13.0.2",
         "remark-custom-header-id": "^1.0.0",
         "shiki-twoslash-renderer": "^0.3.5",
-        "starlight-versions": "^0.10.0",
+        "starlight-versions": "^0.10.2",
       },
       "devDependencies": {
         "@astrojs/starlight": "^0.43.1",
@@ -56,7 +56,7 @@
         "astro": "^7.4.12",
         "sharp": "^0.35.5",
         "starlight-theme-celestia": "workspace:*",
-        "starlight-versions": "^0.10.0",
+        "starlight-versions": "^0.10.2",
       },
     },
   },
@@ -64,9 +64,6 @@
     "sharp",
     "@parcel/watcher",
   ],
-  "patchedDependencies": {
-    "starlight-versions@0.10.1": "patches/starlight-versions@0.10.1.patch",
-  },
   "packages": {
     "@aria-ui/core": ["@aria-ui/core@0.2.1", "", { "dependencies": { "@ocavue/utils": "^1.6.0", "@zag-js/dom-query": "^1.40.0", "alien-signals": "^3.2.1", "server-dom-shim": "^1.1.0" } }, "sha512-EEh2mIHL4HnfjIgZocxhCCqPRU6EE5eLFQcGw4FOfomil11jIBKtmqCQkz8qJ9Ni3IBoh/5DvUFaY206X0oY6A=="],
 
@@ -980,7 +977,7 @@
 
     "starlight-theme-celestia-website": ["starlight-theme-celestia-website@workspace:website"],
 
-    "starlight-versions": ["starlight-versions@0.10.1", "", { "dependencies": { "@pagefind/default-ui": "^1.3.0", "github-slugger": "^2.0.0", "mdast-util-mdx-jsx": "^3.2.0", "mdast-util-mdxjs-esm": "^2.0.1", "remark": "^15.0.1", "remark-directive": "^4.0.0", "remark-frontmatter": "^5.0.0", "remark-mdx": "^3.1.1", "unist-util-visit": "^5.1.0", "vfile": "^6.0.3", "yaml": "^2.8.2" }, "peerDependencies": { "@astrojs/starlight": ">=0.39.0" } }, "sha512-v0YJBd1eyAHWmCa9uiy2jYxULjcRLR1BYKq2taydTR+Ai2bcxJEi5hbqQKDwwAdnN0E6F0NxUCJSyBtZ0p/8qA=="],
+    "starlight-versions": ["starlight-versions@0.10.2", "", { "dependencies": { "@pagefind/default-ui": "^1.3.0", "github-slugger": "^2.0.0", "hast-util-from-html": "^2.0.3", "mdast-util-mdx-jsx": "^3.2.0", "mdast-util-mdxjs-esm": "^2.0.1", "remark": "^15.0.1", "remark-directive": "^4.0.0", "remark-frontmatter": "^5.0.0", "remark-mdx": "^3.1.1", "unist-util-visit": "^5.1.0", "vfile": "^6.0.3", "yaml": "^2.8.2" }, "peerDependencies": { "@astrojs/starlight": ">=0.39.0" } }, "sha512-YzMWfjp82I0d18W0W8MycdClQRTRF+M/sbhGAGOA69bK8P8FIZTmXuFAHmoRQOCtv8m7Kpnab4D2RA98KY7Cgg=="],
 
     "std-env": ["std-env@4.3.0", "", {}, "sha512-OtU/EgQ1kIm5KwqQpBC6ZEMXrZRui11w8zgfTWp8cdO9B8OaPsbA8bTHO2P+HNo1VlUTGMVBwPhydu6poeXiag=="],
 

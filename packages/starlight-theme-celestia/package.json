@@ -39,7 +39,7 @@
     "rehype": "^13.0.2",
     "remark-custom-header-id": "^1.0.0",
     "shiki-twoslash-renderer": "^0.3.5",
-    "starlight-versions": "^0.10.0"
+    "starlight-versions": "^0.10.2"
   },
   "peerDependencies": {
     "@astrojs/starlight": "*",
