@@ -16,7 +16,7 @@
       "version": "0.3.4",
       "dependencies": {
         "@aria-ui/core": "^0.2.1",
-        "@aria-ui/utils": "^0.1.5",
+        "@aria-ui/utils": "^0.1.8",
         "@astrojs/markdown-remark": "^7.3.9",
         "@fontsource/inter": "^5.0.0",
         "@pagefind/default-ui": "^1.5.2",
