@@ -10,7 +10,7 @@
     "typecheck": "astro sync && tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.43.1",
+    "@astrojs/starlight": "^0.43.2",
     "astro": "^7.4.13",
     "sharp": "^0.35.5",
     "starlight-theme-celestia": "workspace:*",

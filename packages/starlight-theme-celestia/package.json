@@ -54,7 +54,7 @@
     }
   },
   "devDependencies": {
-    "@astrojs/starlight": "^0.43.1",
+    "@astrojs/starlight": "^0.43.2",
     "@tailwindcss/cli": "^4.3.5",
     "@tailwindcss/vite": "^4.3.5",
     "@types/node": "^26.6.11",
